@@ -55,7 +55,7 @@ const addTask = ()=>{
         
         addTaskButton.style.display = "inline";
         form.style.display= "none";
-        //showTasksList(content,addTaskButton);
+        showTasksList(content,addTaskButton,tittle);
 
     });
 

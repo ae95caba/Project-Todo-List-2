@@ -22,7 +22,7 @@ import { showTasksList } from "./showTasksList";
     content.appendChild(tittle);
       
     content.appendChild(addTaskButton);
-    //showTasksList(content,addTaskButton);
+    showTasksList(content,addTaskButton,tittle);
     document.body.appendChild(content);
 
     addTaskButton.addEventListener("click",addTask);

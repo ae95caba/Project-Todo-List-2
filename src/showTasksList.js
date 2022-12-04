@@ -1,10 +1,13 @@
 import { projectsObj } from "./projectsObj";
 
-function showTasksList (content,addTaskButton,project){
-      console.log(projectsArr[project]);
+function showTasksList (content,addTaskButton,tittle){
+      
+      console.log(tittle);
+      console.log(projectsObj);
+      console.log(projectsObj[tittle.innerText]);
       let tasksUl = null;
     //check if there is atlesat 1 task
-    if (tasksArr.length){
+    if (Object.keys(projectsObj[tittle.innerText]).length>0){
         //checks if there is already an ul
         if(document.getElementById("tasks-ul")==null){
         tasksUl = document.createElement("ul");
@@ -17,9 +20,9 @@ function showTasksList (content,addTaskButton,project){
             content.insertBefore(tasksUl,addTaskButton);
         };
        
-       tasksArr.forEach(task => {
+        Object.getOwnPropertyNames(projectsObj[tittle.innerText]).forEach(task => {
           const taskLi = document.createElement("li");
-          taskLi.innerText= task.tittle;
+          taskLi.innerText= task;
           tasksUl.appendChild(taskLi);
     
           });
