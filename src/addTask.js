@@ -3,11 +3,13 @@ import { projectsObj } from "./projectsObj";
 
 import { showTasksList } from "./showTasksList";
 
+
 const addTask = ()=>{
-/// gets addTaskButton and content from project content
+/// gets elements 
     const addTaskButton = document.getElementById("add-task-button");
     const content = document.getElementById("content");
     const tittle = document.getElementById("tittle");
+    ////
 
     addTaskButton.style.display = "none";
 
@@ -48,6 +50,8 @@ const addTask = ()=>{
     form.appendChild(cancelButton);
 
     content.appendChild(form);
+// ends form creation //
+
     
     addButton.addEventListener("click",()=>{ 
         projectsObj[tittle.innerText][tittleInput.value]={};
