@@ -1,6 +1,6 @@
 import projectContent from "./projectContent";
 import mouseOverOutClick from "./mouseOverOutClick";
-import { projectsArr,projectsCounter } from "./projectsArr";
+import { projectsObj } from "./projectsObj";
 
 const addProject = ()=>{
     //searchs for html elements , projectDiv is hidden by default with css display:none
@@ -29,8 +29,9 @@ const addProject = ()=>{
         projectsList.insertBefore(newProjectButton, addProjectButton)
         projectDiv.style.display = "none";
         addProjectButton.style.display = "inline" 
+        projectsObj[newProjectButton.innerText]={};
+        console.log(projectsObj);
         input.value = "";
-
 
         //add to the new project created, its own content
         newProjectButton.addEventListener("click",()=> projectContent(newProjectButton.innerText));

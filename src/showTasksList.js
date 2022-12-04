@@ -1,4 +1,4 @@
-import { projectsArr } from "./projectsArr";
+import { projectsObj } from "./projectsObj";
 
 function showTasksList (content,addTaskButton,project){
       console.log(projectsArr[project]);

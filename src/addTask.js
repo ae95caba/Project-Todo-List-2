@@ -1,14 +1,16 @@
 
-import tasksArr from "./projectsArr";
-import TaskConstructor from "./TaskConstructor";
+import { projectsObj } from "./projectsObj";
+
 import { showTasksList } from "./showTasksList";
 
 const addTask = ()=>{
 /// gets addTaskButton and content from project content
     const addTaskButton = document.getElementById("add-task-button");
     const content = document.getElementById("content");
+    const tittle = document.getElementById("tittle");
 
     addTaskButton.style.display = "none";
+
 /// creates form
     const form = document.createElement("form");
     form.id="form";
@@ -25,9 +27,8 @@ const addTask = ()=>{
     detailsLabel.for="details-input"
     detailsLabel.innerText = "Details(Optional):"
 
-    const detailsInput = document.createElement("textarea");
-    detailsInput.rows="4";
-    detailsInput.cols="50";
+    const detailsInput = document.createElement("input");
+    
     detailsInput.id = "details-input";
 
     const addButton=document.createElement("button");
@@ -49,10 +50,12 @@ const addTask = ()=>{
     content.appendChild(form);
     
     addButton.addEventListener("click",()=>{ 
-        tasksArr.push(new TaskConstructor(tittleInput.value,detailsInput.value));
+        projectsObj[tittle.innerText][tittleInput.value]={};
+        projectsObj[tittle.innerText][tittleInput.value]={details: detailsInput.value, test: "hola"};
+        
         addTaskButton.style.display = "inline";
         form.style.display= "none";
-        showTasksList(content,addTaskButton);
+        //showTasksList(content,addTaskButton);
 
     });
 
