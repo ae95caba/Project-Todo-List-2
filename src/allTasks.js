@@ -1,3 +1,5 @@
+import displayAll from "./displayAll";
+
 const allTasks = ()=>{
     const currentContent = document.getElementById("content");
     currentContent.remove();
@@ -8,6 +10,7 @@ const allTasks = ()=>{
     tittle.id="tittle";
     content.appendChild(tittle);
     document.body.appendChild(content);
+    displayAll(content);
 }
 
 export default allTasks;

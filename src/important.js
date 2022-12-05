@@ -1,4 +1,4 @@
-import displayImportant from "./new";
+import displayImportant from "./displayImportant";
 
 const important = ()=>{
     const currentContent = document.getElementById("content");
