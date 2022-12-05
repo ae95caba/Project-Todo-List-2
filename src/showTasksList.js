@@ -26,8 +26,14 @@ function showTasksList (content,addTaskButton,tittle){
           deleteButton.innerText="Delete";
 
           const importantButton = document.createElement("button");
-          importantButton.innerText="Not important";
-          projectsObj[tittle.innerText][task].isImportant=false;
+
+          if(projectsObj[tittle.innerText][task].isImportant == false || projectsObj[tittle.innerText][task].isImportant == undefined){
+            importantButton.innerText="Not important";
+          }else{
+            console.log(projectsObj[tittle.innerText][task].isImportant);
+            importantButton.innerText="Important";}
+          //importantButton.innerText="Not important";
+          //projectsObj[tittle.innerText][task].isImportant=false;
 
           deleteButton.addEventListener("click",()=>{
             taskLi.remove();
