@@ -2,13 +2,14 @@ import { projectsObj } from "./projectsObj";
 
 function showTasksList (content,addTaskButton,tittle){
       
-    
+      //i put this variable here to avoid scope conflict further down this code
       let tasksUl = null;
     //check if there is atlesat 1 task
     if (Object.keys(projectsObj[tittle.innerText]).length>0){
-        //checks if there is already an ul made by this function
+        //checks if there is already an ul made by this function y there is , removes it and makes anoda
+        //because otherwise there will be more than 1 ul
         if(document.getElementById("tasks-ul")==null){
-        tasksUl = document.createElement("ul");
+       tasksUl = document.createElement("ul");
         tasksUl.id= "tasks-ul";
        content.insertBefore(tasksUl,addTaskButton);
         }else{
@@ -17,10 +18,18 @@ function showTasksList (content,addTaskButton,tittle){
             tasksUl.id= "tasks-ul";
             content.insertBefore(tasksUl,addTaskButton);
         };
-       
+       //
         Object.getOwnPropertyNames(projectsObj[tittle.innerText]).forEach(task => {
           const taskLi = document.createElement("li");
-          taskLi.innerText= task;
+          const taskP = document.createElement("p");
+          taskP.innerText=task;
+          taskLi.appendChild(taskP);
+          const taskDetails = document.createElement("p");
+          taskDetails.innerText=projectsObj[tittle.innerText][task].details;
+          taskLi.appendChild(taskDetails);
+          const taskDate = document.createElement("p");
+          taskDate.innerText = projectsObj[tittle.innerText][task].date;
+          taskLi.appendChild(taskDate);
           
           const deleteButton = document.createElement("button");
           deleteButton.innerText="Delete";
@@ -37,9 +46,7 @@ function showTasksList (content,addTaskButton,tittle){
 
           deleteButton.addEventListener("click",()=>{
             taskLi.remove();
-            console.log(projectsObj);
-            console.log(projectsObj[tittle.innerText]);
-            console.log(projectsObj[tittle.innerText][task]);
+
             delete projectsObj[tittle.innerText][task];
           })
 
