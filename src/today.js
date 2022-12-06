@@ -1,3 +1,5 @@
+import displayToday from "./displayToday";
+
 const today = ()=>{
     const currentContent = document.getElementById("content");
     currentContent.remove();
@@ -8,6 +10,7 @@ const today = ()=>{
     tittle.id="tittle";
     content.appendChild(tittle);
     document.body.appendChild(content);
+    displayToday(content);
 }
 
 export default today;

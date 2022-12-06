@@ -33,6 +33,14 @@ const addTask = ()=>{
     
     detailsInput.id = "details-input";
 
+    
+    const dateLabel = document.createElement("label");
+    dateLabel.for="date-input";
+    const dateInput = document.createElement("input");
+    dateInput.type="date";
+    dateInput.id="date-input";
+
+
     const addButton=document.createElement("button");
     addButton.type = "button";
     addButton.innerText="Add";
@@ -45,8 +53,9 @@ const addTask = ()=>{
     form.appendChild(tittleInput);
     form.appendChild(detailsLabel);
     form.appendChild(detailsInput);
+    form.appendChild(dateLabel);
+    form.appendChild(dateInput);
     form.appendChild(addButton);
-    
     form.appendChild(cancelButton);
 
     content.appendChild(form);
@@ -55,8 +64,8 @@ const addTask = ()=>{
     
     addButton.addEventListener("click",()=>{ 
         projectsObj[tittle.innerText][tittleInput.value]={};
-        projectsObj[tittle.innerText][tittleInput.value]={details: detailsInput.value, test: "hola"};
-        
+        projectsObj[tittle.innerText][tittleInput.value]={details: detailsInput.value, date: dateInput.value};
+        console.log(projectsObj[tittle.innerText]);
         addTaskButton.style.display = "inline";
         form.style.display= "none";
         showTasksList(content,addTaskButton,tittle);
