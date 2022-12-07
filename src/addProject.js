@@ -40,7 +40,7 @@ const addProject = ()=>{
         projectDiv.style.display = "none";
         addProjectButton.style.display = "inline" 
         projectsObj[newProjectButton.innerText]={};
-        console.log(projectsObj);
+        
         input.value = "";
 
         //add to the new project created, its own content
@@ -48,7 +48,7 @@ const addProject = ()=>{
         /////////////////////  ADD HIGHLITHED AND SELECTED CSS PROPERTIES ///////////////////////////
         mouseOverOutClick(newProjectButton);
 
-        //projectsArr[projectContent+1]=[];
+        
         
     })
 }

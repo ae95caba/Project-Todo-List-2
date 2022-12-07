@@ -1,14 +1,10 @@
 import important from "./important";
-
 import allTasks from "./allTasks";
 import nextSevenDays from "./nextSevenDays";
 import today from "./today";
 import addProject from "./addProject";
 import projectContent from "./projectContent";
 import mouseOverOutClick from "./mouseOverOutClick";
-
-
-
 
 const buttons = document.querySelectorAll("button");
 

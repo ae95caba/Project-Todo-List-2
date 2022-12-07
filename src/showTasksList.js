@@ -28,8 +28,6 @@ function showTasksList (content,addTaskButton,tittle){
           });
     }
   }
-
-  
-  export {showTasksList};
+export {showTasksList};
 
   //make it non dependan on place put the showtasks list function

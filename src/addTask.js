@@ -73,8 +73,6 @@ const addTask = ()=>{
     content.appendChild(form);
 // ends form creation //
 
- 
-   
 
     addButton.addEventListener("click",()=>{ 
         projectsObj[tittle.innerText][tittleInput.value]={};
