@@ -2,6 +2,8 @@
  
 import { showTasksList } from "./showTasksList";
 
+import mouseOverOutClick from "./mouseOverOutClick";
+
 
 
  const projectContent = (name)=>{
@@ -26,6 +28,8 @@ import { showTasksList } from "./showTasksList";
     document.body.appendChild(content);
 
     addTaskButton.addEventListener("click",addTask);
+
+    mouseOverOutClick(addTaskButton);
 
  }
 

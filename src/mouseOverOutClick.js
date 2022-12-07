@@ -1,4 +1,4 @@
-const mouseOverOutClick = (button)=>{
+const mouseOverOutClick = (button,clickedClass=true)=>{
 
     button.addEventListener('mouseover',  ()=> {
         
@@ -14,15 +14,17 @@ const mouseOverOutClick = (button)=>{
 
     });
 
-    button.addEventListener('click',  ()=> {
-        
-        let previuslyClicked = document.querySelector(".clicked");
-        if (previuslyClicked==null){}else{
-            previuslyClicked.removeAttribute('class');
-        }
-        
-        button.setAttribute('class', 'clicked');   
-    });
+    if(clickedClass){
+        button.addEventListener('click',  ()=> {
+            
+            let previuslyClicked = document.querySelector(".clicked");
+            if (previuslyClicked==null){}else{
+                previuslyClicked.removeAttribute('class');
+            }
+            
+            button.setAttribute('class', 'clicked');   
+        });
+    }
 
 }
 

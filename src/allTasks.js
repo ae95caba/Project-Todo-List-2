@@ -1,4 +1,5 @@
 import displayAll from "./displayAll";
+import newfun from "./newfun";
 
 const allTasks = ()=>{
     const currentContent = document.getElementById("content");
@@ -11,6 +12,7 @@ const allTasks = ()=>{
     content.appendChild(tittle);
     document.body.appendChild(content);
     displayAll(content);
+   
 }
 
 export default allTasks;
