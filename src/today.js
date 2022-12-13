@@ -6,7 +6,7 @@ const today = ()=>{
     const content = document.createElement("div");
     content.id = "content";
     const tittle = document.createElement("div");
-    tittle.innerText="Today";
+    tittle.innerText="Hoy";
     tittle.id="tittle";
     content.appendChild(tittle);
     document.body.appendChild(content);

@@ -7,7 +7,7 @@ const allTasks = ()=>{
     const content = document.createElement("div");
     content.id = "content";
     const tittle = document.createElement("div");
-    tittle.innerText="All tasks";
+    tittle.innerText="Todas las tareas";
     tittle.id="tittle";
     content.appendChild(tittle);
     document.body.appendChild(content);

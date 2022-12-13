@@ -4,6 +4,7 @@ import { projectsObj } from "./projectsObj";
 import { showTasksList } from "./showTasksList";
 
 import mouseOverOutClick from "./mouseOverOutClick";
+import webStorageApi from "./webStorageApi";
 
 
 const addTask = ()=>{
@@ -77,7 +78,7 @@ const addTask = ()=>{
     addButton.addEventListener("click",()=>{ 
         projectsObj[tittle.innerText][tittleInput.value]={};
         projectsObj[tittle.innerText][tittleInput.value]={details: detailsInput.value, date: dateInput.value};
-        console.log(projectsObj[tittle.innerText]);
+        webStorageApi();
         addTaskButton.style.display = "inline";
         form.style.display= "none";
         showTasksList(content,addTaskButton,tittle);

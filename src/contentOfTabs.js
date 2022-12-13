@@ -1,6 +1,6 @@
 import displayImportant from "./displayImportant";
 
-const important = ()=>{
+const contentOfTabs = (name, type)=>{
     const currentContent = document.getElementById("content");
     currentContent.remove();
 
@@ -8,7 +8,7 @@ const important = ()=>{
     content.id = "content";
 
     const tittle = document.createElement("div");
-    tittle.innerText="Importantes";
+    tittle.innerText=name;
     tittle.id="tittle";
 
     content.appendChild(tittle);

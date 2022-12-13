@@ -6,7 +6,7 @@ const nextSevenDays = ()=>{
     const content = document.createElement("div");
     content.id = "content";
     const tittle = document.createElement("div");
-    tittle.innerText="Next seven days";
+    tittle.innerText="Siguientes 7 dias";
     tittle.id="tittle";
     content.appendChild(tittle);
     document.body.appendChild(content);

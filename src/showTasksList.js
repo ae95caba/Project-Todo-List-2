@@ -1,4 +1,4 @@
-import mouseOverOutClick from "./mouseOverOutClick";
+
 import { projectsObj } from "./projectsObj";
 import newfun from "./newfun";
 
@@ -7,6 +7,10 @@ function showTasksList (content,addTaskButton,tittle){
       //i put this variable here to avoid scope conflict further down this code
       let tasksUl = null;
     //check if there is atlesat 1 task
+    alert(tittle.innerText);
+    alert(projectsObj[tittle.innerText]);
+    alert(projectsObj);
+    console.log(projectsObj);
     if (Object.keys(projectsObj[tittle.innerText]).length>0){
         //checks if there is already an ul made by this function y there is , removes it and makes anoda
         //because otherwise there will be more than 1 ul

@@ -1,5 +1,6 @@
 import { projectsObj } from "./projectsObj";
 import mouseOverOutClick from "./mouseOverOutClick";
+import webStorageApi from "./webStorageApi";
 
 
 function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDisplayImportant=false){
@@ -45,6 +46,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
       taskLi.remove();
 
       delete projectsObj[project][task];
+      webStorageApi();
     })
 //////////////////////////////////////
     
@@ -53,6 +55,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
             if (importantButton.innerText == "Not important") {
               importantButton.innerText = "Important";
               projectsObj[project][task].isImportant=true;
+              webStorageApi();
 
             } else {
               taskLi.remove();
@@ -62,6 +65,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
               }
               
               projectsObj[project][task].isImportant=false;
+              webStorageApi();
   
             }          
           })
@@ -70,10 +74,12 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
             if (importantButton.innerText == "Not important") {
                 importantButton.innerText = "Important";
                 projectsObj[project][task].isImportant=true;
+                webStorageApi();
     
             } else {
                 importantButton.innerText = "Not important";
                 projectsObj[project][task].isImportant=false;
+                webStorageApi();
     
             }          
             })
@@ -86,6 +92,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
         taskP.style.textDecoration ="line-through";
         taskDetails.style.textDecoration ="line-through";
         projectsObj[project][task].isDone=true;
+        webStorageApi();
 
       } else {
         markDone.innerText = "Not done";
@@ -94,6 +101,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
         taskDetails.style.textDecoration ="none";
         
         projectsObj[project][task].isDone=false;
+        webStorageApi();
 
       }          
     })

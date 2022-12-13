@@ -5,6 +5,50 @@ import today from "./today";
 import addProject from "./addProject";
 import projectContent from "./projectContent";
 import mouseOverOutClick from "./mouseOverOutClick";
+import { projectsObj } from "./projectsObj";
+import webStorageApi from "./webStorageApi";
+
+if(localStorage.getItem("data")){
+    projectsObj= JSON.parse(localStorage.getItem("data"));
+    console.log(projectsObj);
+}
+
+
+         
+if(Object.getOwnPropertyNames(projectsObj).length){
+const addProjectButton = document.getElementById("add-project-button");
+const projectsList = document.getElementById("projects-list");
+Object.getOwnPropertyNames(projectsObj).forEach(project=>{
+    if(project !=="Todos"){
+
+    const newDiv = document.createElement("div");
+    newDiv.className= "new-div";
+
+    const newProjectButton = document.createElement("button");//its the new created project
+    newProjectButton.innerText = project;
+    newDiv.appendChild(newProjectButton);
+
+    const deleteNewProject = document.createElement("button");
+    deleteNewProject.innerText = "X";
+    newDiv.appendChild(deleteNewProject);
+
+    projectsList.insertBefore(newDiv, addProjectButton);
+    //add to the new project created, its own content
+    newProjectButton.addEventListener("click",()=> projectContent(newProjectButton.innerText));
+   /////
+    deleteNewProject.addEventListener("click",()=>{
+        newDiv.remove();
+        delete projectsObj[project];
+        webStorageApi();
+    })
+
+}
+
+})
+}
+       
+        
+
 
 const buttons = document.querySelectorAll("button");
 
