@@ -12,19 +12,22 @@
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+    border-bottom: 1px solid green;
 }
 
 body{
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 2fr 6fr 1fr;
-    border: 2px dotted blue;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 2fr 12fr 1fr;
+    
     height: 100vh;
 }
 
-body>*{
-    border: 1px solid red;
+.new-div{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
+
 
 #footer{
     grid-row: 3/4;
@@ -37,23 +40,27 @@ body>*{
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding: 15px
 
 }
 
 #projects, #home{
-    border: 1px solid green;
+    
     display: flex;
+    gap: 10px;
     
     flex-direction: column;
     
 }
+
+
 
 ul{
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    border: 1px blue solid;
+    gap: 7px;
+    
 }
 
 img{
@@ -62,9 +69,15 @@ img{
 }
 
 li{
-    border: 1px dotted black;
+    border: 1px solid black;
     text-align: center;
+    display: flex;
+    gap: 14px;
+    padding: 5px;
+    align-items: center;
 }
+
+
 
 .hovered{
     background-color: orange;
@@ -74,6 +87,7 @@ li{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgb(191, 212, 152);
 }
 
 .clicked{
@@ -82,4 +96,73 @@ li{
 
 .hidden{
     display: none;
+}
+
+p:nth-child(3){
+  
+  margin-left: auto;
+}
+
+p:nth-child(2)::before{
+    content:": ";
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgb(242, 245, 200);
+}
+
+li button{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+#sidebar button{
+    
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#tittle{
+    
+    padding: 15px;
+    background-color: green;
+    color: white ;
+    font-weight: 600;
+    font-size: 19px;
+    
+}
+
+#add-task-button{
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 15px;
+    
+}
+
+#add ,#cancel{
+    
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+input{
+    border: solid 1px black;
+}
+
+form{
+    display:flex;
+    gap: 7px;
+    align-items: center;
+}
+
+form button{
+    
+    padding: 10px;
+    border-radius: 15px;
 }

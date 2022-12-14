@@ -17,25 +17,25 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
     taskLi.appendChild(taskDate);
     
     const deleteButton = document.createElement("button");
-    deleteButton.innerText="Delete";
+    deleteButton.innerText="Borrar";
 /////////////////////
     const importantButton = document.createElement("button");
     if(projectsObj[project][task].isImportant == false || projectsObj[project][task].isImportant == undefined){
-      importantButton.innerText="Not important";
+      importantButton.innerText="No importante";
     }else{  
-    importantButton.innerText="Important";}
+    importantButton.innerText="Importante";}
 ///////////////////////////////
     const markDone = document.createElement("button");
     markDone.type="button";
-    markDone.innerText="Done";
+    markDone.innerText="Echa";
 
     if(projectsObj[project][task].isDone == false || projectsObj[project][task].isDone == undefined){
-      markDone.innerText="Not done";
+      markDone.innerText="Sin hacer";
       taskP.style.textDecoration ="none";
     taskDetails.style.textDecoration ="none";
       
     }else{
-    markDone.innerText="Done";
+    markDone.innerText="Echa";
     taskP.style.textDecoration ="line-through";
         taskDetails.style.textDecoration ="line-through";
 }
@@ -52,8 +52,8 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
     
     if(forDisplayImportant){
         importantButton.addEventListener("click",()=>{  
-            if (importantButton.innerText == "Not important") {
-              importantButton.innerText = "Important";
+            if (importantButton.innerText == "No importante") {
+              importantButton.innerText = "Importante";
               projectsObj[project][task].isImportant=true;
               webStorageApi();
 
@@ -71,13 +71,13 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
           })
     }else{
         importantButton.addEventListener("click",()=>{  
-            if (importantButton.innerText == "Not important") {
-                importantButton.innerText = "Important";
+            if (importantButton.innerText == "No importante") {
+                importantButton.innerText = "Importante";
                 projectsObj[project][task].isImportant=true;
                 webStorageApi();
     
             } else {
-                importantButton.innerText = "Not important";
+                importantButton.innerText = "No importante";
                 projectsObj[project][task].isImportant=false;
                 webStorageApi();
     
@@ -86,8 +86,8 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
     }
 /////////////////////////////
     markDone.addEventListener("click",()=>{  
-      if (markDone.innerText == "Not done") {
-        markDone.innerText = "Done";
+      if (markDone.innerText == "Sin hacer") {
+        markDone.innerText = "Echa";
         
         taskP.style.textDecoration ="line-through";
         taskDetails.style.textDecoration ="line-through";
@@ -95,7 +95,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
         webStorageApi();
 
       } else {
-        markDone.innerText = "Not done";
+        markDone.innerText = "Sin hacer";
         
         taskP.style.textDecoration ="none";
         taskDetails.style.textDecoration ="none";

@@ -1,4 +1,7 @@
 import displayImportant from "./displayImportant";
+import displayAll from "./displayAll";
+import displayNextSevenDays from "./displayNextSevenDays";
+import displayToday from "./displayToday";
 
 const contentOfTabs = (name, type)=>{
     const currentContent = document.getElementById("content");
@@ -13,7 +16,21 @@ const contentOfTabs = (name, type)=>{
 
     content.appendChild(tittle);
     document.body.appendChild(content);
-    displayImportant(content);
+    
+    switch(type){
+        case "important":
+            displayImportant(content); 
+            break;
+        case "all": 
+            displayAll(content);
+            break;
+        case "seven":
+            displayNextSevenDays(content);
+            break;
+        case "today":
+            displayToday(content);
+            break;
+    }
 }
 
-export default important;
+export default contentOfTabs;

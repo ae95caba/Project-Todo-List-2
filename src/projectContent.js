@@ -4,8 +4,6 @@ import { showTasksList } from "./showTasksList";
 
 import mouseOverOutClick from "./mouseOverOutClick";
 
-
-
    const projectContent = (name)=>{
     const currentContent = document.getElementById("content");
     currentContent.remove();
@@ -17,11 +15,9 @@ import mouseOverOutClick from "./mouseOverOutClick";
     tittle.innerText = name;
     tittle.id="tittle";
 
-   
-
     const addTaskButton = document.createElement("button");
     addTaskButton.id = "add-task-button";
-    addTaskButton.innerText="Add Task";
+    addTaskButton.innerText="Añadir tarea";
 
     content.appendChild(tittle);
    content.appendChild(addTaskButton);

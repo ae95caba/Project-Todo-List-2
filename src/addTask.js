@@ -44,20 +44,16 @@ const addTask = ()=>{
     dateInput.type="date";
     dateInput.id="date-input";
 
-
-  
-
-
     const addButton=document.createElement("button");
     addButton.type = "button";
-    addButton.innerText="Add";
+    addButton.innerText="Añadir";
     addButton.className="add-button";
     mouseOverOutClick(addButton);
 
     
     const cancelButton=document.createElement("button");
     cancelButton.type = "button";
-    cancelButton.innerText="Cancel";
+    cancelButton.innerText="Cancelar";
     cancelButton.className="cancel-button"
     mouseOverOutClick(cancelButton);
 
