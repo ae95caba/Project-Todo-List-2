@@ -22,7 +22,7 @@ const addTask = ()=>{
 
     const tittleLabel = document.createElement("label");
     tittleLabel.for="tittle-input"
-    tittleLabel.innerText = "Tittle:"
+    tittleLabel.innerText = "Titulo:"
 
     const tittleInput = document.createElement("input");
     tittleInput.type = "text";
@@ -30,7 +30,7 @@ const addTask = ()=>{
 
     const detailsLabel = document.createElement("label");
     detailsLabel.for="details-input"
-    detailsLabel.innerText = "Details(Optional):"
+    detailsLabel.innerText = "Detalles(opcional):"
 
     const detailsInput = document.createElement("input");
     
@@ -39,7 +39,7 @@ const addTask = ()=>{
     
     const dateLabel = document.createElement("label");
     dateLabel.for="date-input";
-    dateLabel.innerText="Date:";
+    dateLabel.innerText="Fecha(opcional):";
     const dateInput = document.createElement("input");
     dateInput.type="date";
     dateInput.id="date-input";
@@ -75,7 +75,7 @@ const addTask = ()=>{
         projectsObj[tittle.innerText][tittleInput.value]={};
         projectsObj[tittle.innerText][tittleInput.value]={details: detailsInput.value, date: dateInput.value};
         webStorageApi();
-        addTaskButton.style.display = "inline";
+        addTaskButton.style.display ="inline";
         form.style.display= "none";
         showTasksList(content,addTaskButton,tittle);
 

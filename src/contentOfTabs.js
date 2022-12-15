@@ -1,6 +1,6 @@
 import displayImportant from "./displayImportant";
 import displayAll from "./displayAll";
-import displayNextSevenDays from "./displayNextSevenDays";
+import {displayNextSevenDays} from "./displayNextSevenDays";
 import displayToday from "./displayToday";
 
 const contentOfTabs = (name, type)=>{

@@ -1,16 +1,16 @@
 const mouseOverOutClick = (button,clickedClass=true)=>{
-
+//the clickedclass=true is for setting it false on buttons that i dont want to have the clicked class
     button.addEventListener('mouseover',  ()=> {
         
-        if(button.className !=="clicked"){
-        button.setAttribute('class', 'hovered');
+        if( !button.classList.contains('clicked')){
+        button.classList.add('hovered');
         }
     });
 
     button.addEventListener('mouseout',  ()=> {
         
-        if(button.className !=="clicked"){
-        button.removeAttribute('class');}
+         button.classList.remove('hovered');
+    
 
     });
 
@@ -19,10 +19,11 @@ const mouseOverOutClick = (button,clickedClass=true)=>{
             
             let previuslyClicked = document.querySelector(".clicked");
             if (previuslyClicked==null){}else{
-                previuslyClicked.removeAttribute('class');
+                previuslyClicked.classList.remove('clicked');
             }
             
-            button.setAttribute('class', 'clicked');   
+            button.classList.add('clicked'); 
+            button.classList.remove('hovered');  
         });
     }
 

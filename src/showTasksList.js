@@ -8,7 +8,9 @@ function showTasksList (content,addTaskButton,tittle){
       let tasksUl = null;
     //check if there is atlesat 1 task
    
-    console.log(projectsObj);
+  /*   alert(projectsObj[tittle.innerText]);
+    alert(tittle.innerText);
+ */
     if (Object.keys(projectsObj[tittle.innerText]).length>0){
         //checks if there is already an ul made by this function y there is , removes it and makes anoda
         //because otherwise there will be more than 1 ul

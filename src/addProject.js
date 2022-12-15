@@ -6,27 +6,27 @@ import webStorageApi from "./webStorageApi";
 
 const addProject = ()=>{
     
-    //searchs for html elements , projectDiv is hidden by default with css display:none
-    const projectDiv = document.getElementById("new-project-div");
+    //searchs for html elements , projectLi is hidden by default with css display:none
+    const projectLi = document.getElementById("new-project-li");
     const addProjectButton = document.getElementById("add-project-button");
-    const addButton = document.getElementById("add");//in projectDiv
-    addButton.classList.add("add-button");
-    const cancelButton = document.getElementById("cancel");//in projectDiv
-    cancelButton.classList.add("cancel-button");
+    const addButton = document.querySelector(".add");//in projectLi
+    
+    const cancelButton = document.querySelector(".cancel");//in projectLi
+   
 const projectsList = document.getElementById("projects-list");
-const input = document.getElementById("input");//in projectDiv
+const input = document.getElementById("input");//in projectLi
 
     ////////////////////////////////////////
     
     addProjectButton.addEventListener("click",()=>{
-        
+       
         addProjectButton.style.display = "none";
-        projectDiv.style.display = "flex"; 
+        projectLi.classList.remove('hidden'); 
     });
 
     cancelButton.addEventListener("click",()=>{
-        projectDiv.style.display = "none";
-        addProjectButton.style.display = "inline"
+        projectLi.classList.add ('hidden');
+        addProjectButton.style.display = "flex"
         input.value = "";
     });
 
@@ -34,22 +34,29 @@ const input = document.getElementById("input");//in projectDiv
     mouseOverOutClick(addButton);
     addButton.addEventListener("click",()=>{
     
-        const newDiv = document.createElement("div");
-           const newProjectButton = document.createElement("button");//its the new created project
-        newProjectButton.innerText = input.value;
+        const newLi = document.createElement("li");
+        const newProjectButton = document.createElement("button");//its the new created project
+          
+         
+           
+           newLi.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+           <path fill="#000000" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+        </svg>`;
+        newProjectButton.appendChild(document.createTextNode(input.value));
+           
 
-        newDiv.appendChild(newProjectButton);
-        newDiv.className= "new-div";
+        newLi.appendChild(newProjectButton);
+        newLi.className= "new-li";
 
         const deleteNewProject = document.createElement("button");
         deleteNewProject.innerText = "X";
         mouseOverOutClick(deleteNewProject);
 
-        newDiv.appendChild(deleteNewProject);
+        newLi.appendChild(deleteNewProject);
 
-        projectsList.insertBefore(newDiv, addProjectButton)
-        projectDiv.style.display = "none";
-        addProjectButton.style.display = "inline" 
+        projectsList.insertBefore(newLi, addProjectButton)
+        projectLi.classList.add('hidden');
+        addProjectButton.style.display = "flex" 
         projectsObj[newProjectButton.innerText]={};
         webStorageApi();
         input.value = "";
@@ -57,10 +64,10 @@ const input = document.getElementById("input");//in projectDiv
         //add to the new project created, its own content
         newProjectButton.addEventListener("click",()=> projectContent(newProjectButton.innerText));
         /////////////////////  ADD HIGHLITHED AND SELECTED CSS PROPERTIES ///////////////////////////
-        mouseOverOutClick(newProjectButton);
+        mouseOverOutClick(newLi);
         ////
         deleteNewProject.addEventListener("click",()=>{
-            newDiv.remove();
+            newLi.remove();
             delete projectsObj[newProjectButton.innerText];
             webStorageApi();
             const currentContent = document.getElementById("content");

@@ -22,7 +22,7 @@ function displayToday(content){
 
                 if(isToday(objDate)){
                 
-                  newfun(project,tasksUl,task,content);
+                  newfun(project,tasksUl,task,content,true,false,false,true);
                   
                 }
               
