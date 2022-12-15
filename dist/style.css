@@ -87,22 +87,32 @@ ul{
 }
 
 img{
-    border: 2px dotted pink;;
-    display: none;
+    
+    display: inline;
+    width: 20px;
 }
 
 #tasks-ul li{
     border: 1px solid black;
-    display:grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    display:flex;
+   
     padding: 5px;
     gap: 10px;
+}
+
+#tasks-ul li p{
+    display: flex;
+    justify-content: center;
+}
+
+#tasks-ul li button{
+    background-color: transparent;;
 }
 
 body ul #add{
     background-color: rgb(31, 216, 31) !important;
     padding: 6px;
+    margin: 0px
 }
 
 body ul #cancel {
@@ -165,14 +175,12 @@ body ul #cancel {
     display: none !important;
 }
 
-p:nth-child(3){
-  
-  margin-left: auto;
+li> *:nth-child(3){
+ 
+  margin-right: auto;
 }
 
-p:nth-child(2)::before{
-    content:": ";
-}
+
 
 #content{
     display: flex;

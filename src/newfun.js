@@ -13,20 +13,45 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
     const taskLi = document.createElement("li");
     const taskP = document.createElement("p");
     taskP.innerText=task;
+
+
+
+    
+
+    const markDone = document.createElement("img");
+    taskLi.appendChild(markDone);
+
     taskLi.appendChild(taskP);
     
+    
+
+   
     const taskDetails = document.createElement("p");
-    taskDetails.innerText=projectsObj[project][task].details;
+    if(projectsObj[project][task].details){
+      taskDetails.innerText = ": ";
+      taskDetails.innerText+=projectsObj[project][task].details;
+    }
     taskLi.appendChild(taskDetails);
+
+    
+
+    
+
     const taskDate = document.createElement("p");
+    
     const taskDateEdit = document.createElement("input");
     taskDateEdit.type = "date";
     taskDateEdit.style.display = "none";
 
   taskDate.addEventListener("click",()=>{
     taskDateEdit.style.display = "inline";
-    taskDateEdit.value = taskDate.innerText;
     taskDate.style.display = "none";
+    if(taskDate.innerText == "Sin fecha"){
+
+    }else{
+      taskDateEdit.value=taskDate.innerText;
+    }
+    
   })
 
   taskDateEdit.addEventListener("focusout",()=>{
@@ -35,6 +60,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
     taskDate.style.display = "inline";
     projectsObj[project][task].date= taskDateEdit.value;
     taskDate.innerText = projectsObj[project][task].date;
+    if (taskDate.innerText == ""){taskDate.innerText="Sin fecha";};
     webStorageApi();
     if(forDisplayNextSevenDays){
       const end = Date.now();
@@ -83,7 +109,7 @@ function newfun(project,tasksUl,task,content,contentAppendChilTasksUl=true,forDi
     taskLi.appendChild(taskDateEdit);
     
     const deleteButton = document.createElement("button");
-    deleteButton.innerText="Borrar";
+    deleteButton.innerText="X";
 /////////////////////
 
 const fullStar= `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -95,25 +121,31 @@ const emptyStar= `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" />
 </svg>`;
  
-    const importantButton = document.createElement("button");
+    const importantButton = document.createElement("img");
     if(projectsObj[project][task].isImportant == false || projectsObj[project][task].isImportant == undefined){
-      importantButton.innerHTML=emptyStar;
+     
+      importantButton.src="star-outline.svg";
     }else{  
-    importantButton.innerHTML=fullStar;}
+      
+    importantButton.src="star.svg";}
 ///////////////////////////////
-    const markDone = document.createElement("button");
-    markDone.type="button";
-    markDone.innerText="Echa";
+   
+    
+    
 
     if(projectsObj[project][task].isDone == false || projectsObj[project][task].isDone == undefined){
-      markDone.innerText="Sin hacer";
+      markDone.src="circle-outline.svg";
       taskP.style.textDecoration ="none";
+      taskP.style.opacity="1";
     taskDetails.style.textDecoration ="none";
+    taskDetails.style.opacity="1";
       
     }else{
-    markDone.innerText="Echa";
+    markDone.src="check-circle.svg";
     taskP.style.textDecoration ="line-through";
-        taskDetails.style.textDecoration ="line-through";
+    taskP.style.opacity="0.3";
+    taskDetails.style.textDecoration ="line-through";
+    taskDetails.style.opacity="0.3";
 }
 
 /////////////////////////////////       
@@ -128,8 +160,8 @@ const emptyStar= `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
     
     if(forDisplayImportant){
         importantButton.addEventListener("click",()=>{  
-            if (importantButton.innerHTML == emptyStar) {
-              importantButton.innerHTML = fullStar;
+            if (importantButton.getAttribute("src") == "star-outline.svg") {
+              importantButton.src = "star.svg";
               projectsObj[project][task].isImportant=true;
               webStorageApi();
 
@@ -146,20 +178,17 @@ const emptyStar= `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
             }          
           })
     }else{
+        
         importantButton.addEventListener("click",()=>{ 
           
-          alert(importantButton.innerHTML == fullStar);
-          alert(importantButton.innerHTML);
-          alert(emptyStar);
-            if (importantButton.innerHTML === `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" />
-        </svg>`) {
-                importantButton.innerHTML = fullStar;
+       
+            if (importantButton.getAttribute("src") == "star-outline.svg") {
+                importantButton.src = "star.svg";
                 projectsObj[project][task].isImportant=true;
                 webStorageApi();
     
             } else {
-                importantButton.innerHTML = emptyStar;
+                importantButton.src = "star-outline.svg";
                 projectsObj[project][task].isImportant=false;
                 webStorageApi();
     
@@ -168,19 +197,23 @@ const emptyStar= `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
     }
 /////////////////////////////
     markDone.addEventListener("click",()=>{  
-      if (markDone.innerText == "Sin hacer") {
-        markDone.innerText = "Echa";
+      if (markDone.getAttribute("src") == "circle-outline.svg") {
+        markDone.src = "check-circle.svg";
         
         taskP.style.textDecoration ="line-through";
+        taskP.style.opacity="0.3";
         taskDetails.style.textDecoration ="line-through";
+        taskDetails.style.opacity="0.3";
         projectsObj[project][task].isDone=true;
         webStorageApi();
 
       } else {
-        markDone.innerText = "Sin hacer";
+        markDone.src = "circle-outline.svg";
         
         taskP.style.textDecoration ="none";
+        taskP.style.opacity="1";
         taskDetails.style.textDecoration ="none";
+        taskDetails.style.opacity="1";
         
         projectsObj[project][task].isDone=false;
         webStorageApi();
@@ -188,13 +221,14 @@ const emptyStar= `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
       }          
     })
 /////////////////////////         
-    taskLi.appendChild(markDone);
-    taskLi.appendChild(deleteButton);
+    //taskLi.appendChild(markDone);
+    
     taskLi.appendChild(importantButton);
+    taskLi.appendChild(deleteButton);
 
-    mouseOverOutClick(markDone,false);
-    mouseOverOutClick(deleteButton,false);
-    mouseOverOutClick(importantButton,false);
+    //mouseOverOutClick(markDone,false);
+    //mouseOverOutClick(deleteButton,false);
+    //mouseOverOutClick(importantButton,false);
 
     tasksUl.appendChild(taskLi);
     if(contentAppendChilTasksUl){
