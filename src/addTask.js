@@ -44,14 +44,12 @@ const addTask = () => {
   const addButton = document.createElement("button");
   addButton.type = "button";
   addButton.innerText = "Añadir";
-  addButton.className = "add-button";
-  mouseOverOutClick(addButton, false);
+  addButton.className = "add";
 
   const cancelButton = document.createElement("button");
   cancelButton.type = "button";
   cancelButton.innerText = "Cancelar";
-  cancelButton.className = "cancel-button";
-  mouseOverOutClick(cancelButton, false);
+  cancelButton.className = "cancel";
 
   form.appendChild(tittleLabel);
   form.appendChild(tittleInput);

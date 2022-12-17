@@ -19,6 +19,7 @@ const contentOfEachProject = (name) => {
   const addTaskButton = document.createElement("button");
   addTaskButton.id = "add-task-button";
   addTaskButton.innerText = "Añadir tarea";
+  addTaskButton.className = "add";
 
   content.appendChild(tittle);
 
@@ -29,8 +30,6 @@ const contentOfEachProject = (name) => {
   document.body.appendChild(content);
 
   addTaskButton.addEventListener("click", addTask);
-
-  mouseOverOutClick(addTaskButton);
 };
 
 export default contentOfEachProject;

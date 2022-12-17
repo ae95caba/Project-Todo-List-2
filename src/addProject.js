@@ -26,9 +26,8 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   newLi.appendChild(newProjectButton);
   newLi.className = "new-li";
 
-  const deleteNewProject = document.createElement("button");
-  deleteNewProject.innerText = "X";
-  mouseOverOutClick(deleteNewProject, false);
+  const deleteNewProject = document.createElement("img");
+  deleteNewProject.src = "bin.svg";
 
   newLi.appendChild(deleteNewProject);
 

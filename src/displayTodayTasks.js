@@ -1,5 +1,5 @@
 import { projectsObj } from "./projectsObj";
-import { isToday, parse } from "date-fns";
+import isInToday from "./isInToday";
 import makeSingleTask from "./makeSingleTask";
 
 function displayTodayTasks(content) {
@@ -9,13 +9,7 @@ function displayTodayTasks(content) {
   Object.getOwnPropertyNames(projectsObj).forEach((project) => {
     //make an array with all the tasks
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
-      const objDate = parse(
-        projectsObj[project][task].date.replaceAll("-", "/"),
-        "yyyy/MM/dd",
-        new Date()
-      );
-
-      if (isToday(objDate)) {
+      if (isInToday(projectsObj[project][task].date)) {
         makeSingleTask(
           project,
           tasksUl,

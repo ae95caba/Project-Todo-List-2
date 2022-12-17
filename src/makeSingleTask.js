@@ -1,8 +1,8 @@
 import { projectsObj } from "./projectsObj";
 import isInTheNextSevenDays from "./isInNextSevenDays";
 import webStorageApi from "./webStorageApi";
-import { isToday } from "date-fns";
-import { isWithinInterval, addDays, parse } from "date-fns";
+
+import isInToday from "./isInToday";
 
 function makeSingleTask(
   project,
@@ -14,6 +14,8 @@ function makeSingleTask(
   fordisplayNextSevenDaysTasks = false,
   fordisplayTodayTasks = false
 ) {
+  const divForTaskAndDetails = document.createElement("div");
+
   const taskLi = document.createElement("li");
   const taskP = document.createElement("p");
   taskP.innerText = task;
@@ -21,15 +23,15 @@ function makeSingleTask(
   const markDone = document.createElement("img");
   taskLi.appendChild(markDone);
 
-  taskLi.appendChild(taskP);
-
   const taskDetails = document.createElement("p");
+  divForTaskAndDetails.appendChild(taskP);
+  divForTaskAndDetails.appendChild(taskDetails);
   if (projectsObj[project][task].details) {
-    taskDetails.innerText = ": ";
+    taskP.innerText += ":";
     taskDetails.innerText += projectsObj[project][task].details;
   }
-  taskLi.appendChild(taskDetails);
-
+  taskLi.appendChild(divForTaskAndDetails);
+  /////////////////////////////////////////////
   const taskDate = document.createElement("p");
 
   const taskDateEdit = document.createElement("input");
@@ -63,13 +65,7 @@ function makeSingleTask(
       }
     }
     if (fordisplayTodayTasks) {
-      const objDate = parse(
-        projectsObj[project][task].date.replaceAll("-", "/"),
-        "yyyy/MM/dd",
-        new Date()
-      );
-
-      if (!isToday(objDate)) {
+      if (!isInToday(projectsObj[project][task].date)) {
         taskLi.remove();
         if (tasksUl.innerHTML == "") {
           tasksUl.remove();
@@ -84,7 +80,7 @@ function makeSingleTask(
   }
   taskLi.appendChild(taskDate);
   taskLi.appendChild(taskDateEdit);
-
+  ////////////////////////////////////
   const deleteButton = document.createElement("img");
   deleteButton.src = "bin.svg";
   /////////////////////
@@ -127,36 +123,26 @@ function makeSingleTask(
   });
   //////////////////////////////////////
 
-  if (fordisplayImportantTasks) {
-    importantButton.addEventListener("click", () => {
-      if (importantButton.getAttribute("src") == "star-outline.svg") {
-        importantButton.src = "star.svg";
-        projectsObj[project][task].isImportant = true;
-        webStorageApi();
-      } else {
+  importantButton.addEventListener("click", () => {
+    if (importantButton.getAttribute("src") == "star-outline.svg") {
+      importantButton.src = "star.svg";
+      projectsObj[project][task].isImportant = true;
+      webStorageApi();
+    } else {
+      if (fordisplayImportantTasks) {
         taskLi.remove();
 
         if (tasksUl.innerHTML == "") {
           tasksUl.remove();
         }
-
-        projectsObj[project][task].isImportant = false;
-        webStorageApi();
-      }
-    });
-  } else {
-    importantButton.addEventListener("click", () => {
-      if (importantButton.getAttribute("src") == "star-outline.svg") {
-        importantButton.src = "star.svg";
-        projectsObj[project][task].isImportant = true;
-        webStorageApi();
       } else {
         importantButton.src = "star-outline.svg";
-        projectsObj[project][task].isImportant = false;
-        webStorageApi();
       }
-    });
-  }
+      projectsObj[project][task].isImportant = false;
+      webStorageApi();
+    }
+  });
+
   /////////////////////////////
   markDone.addEventListener("click", () => {
     if (markDone.getAttribute("src") == "circle-outline.svg") {
