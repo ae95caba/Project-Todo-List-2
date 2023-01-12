@@ -1,8 +1,6 @@
 import addTask from "./addTask";
 
-import { displayTasksOfEachProject } from "./displayTasksOfEachProject";
-
-import mouseOverOutClick from "./mouseOverOutClick";
+import { displayTasksOfEachProject } from "./displayTasks";
 
 //shows the content of each individual project
 const contentOfEachProject = (name) => {

@@ -2,10 +2,15 @@ import { actuallyAddProject, addProject } from "./addProject";
 import contentOfEachProject from "./contentOfEachProject";
 import mouseOverOutClick from "./mouseOverOutClick";
 import { projectsObj } from "./projectsObj";
-
+import initFirebase from "./login";
 import contentOfTabs from "./contentOfTabs";
 import burgerMenu from "./burgerMenu";
+import { loggingForm } from "./dom";
 
+loggingForm.addCloseEvent();
+loggingForm.addOpenEvent();
+
+initFirebase();
 burgerMenu();
 
 if (localStorage.getItem("data")) {
@@ -39,12 +44,12 @@ nextSevenDaysButton.addEventListener("click", () =>
   contentOfTabs(nextSevenDaysButton.innerText, "seven")
 );
 
-const todosButton = document.getElementById("todos");
+/* const todosButton = document.getElementById("todos");
 todosButton.addEventListener("click", () =>
   contentOfEachProject(todosButton.innerText)
 );
 const todosLi = document.getElementById("todos-li");
-mouseOverOutClick(todosLi);
+mouseOverOutClick(todosLi); */
 
 const allHomeLis = document.querySelectorAll(".home-li");
 allHomeLis.forEach((li) => {
@@ -55,4 +60,4 @@ const addProjectLi = document.getElementById("add-project-button");
 mouseOverOutClick(addProjectLi, false);
 
 addProject();
-contentOfEachProject(todosButton.innerText);
+/* contentOfEachProject(todosButton.innerText); */

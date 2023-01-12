@@ -1,8 +1,7 @@
 import { projectsObj } from "./projectsObj";
 
-import { displayTasksOfEachProject } from "./displayTasksOfEachProject";
+import { displayTasksOfEachProject } from "./displayTasks";
 
-import mouseOverOutClick from "./mouseOverOutClick";
 import webStorageApi from "./webStorageApi";
 
 const addTask = () => {
@@ -77,7 +76,6 @@ const addTask = () => {
   });
 
   cancelButton.addEventListener("click", () => {
-    //form.style.display= "none";
     form.remove();
     addTaskButton.style.display = "inline";
   });

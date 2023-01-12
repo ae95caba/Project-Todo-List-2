@@ -1,7 +1,9 @@
-import displayImportantTasks from "./displayImportantTasks";
-import displayAllTasks from "./displayAllTasks";
-import { displayNextSevenDaysTasks } from "./displayNextSevenDaysTasks";
-import displayTodayTasks from "./displayTodayTasks";
+import {
+  displayImportantTasks,
+  displayNextSevenDaysTasks,
+  displayTodayTasks,
+  displayAllTasks,
+} from "./displayTasks";
 
 const contentOfTabs = (name, type) => {
   const currentContent = document.getElementById("content");
