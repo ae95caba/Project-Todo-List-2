@@ -187,11 +187,20 @@ img {
 
 #new-project-li {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 10px;
-  button {
-    width: 100%;
+
+  #project-buttons-container {
+    grid-column: 1/3;
+    display: flex;
+    gap: 5px;
+    width: 100% !important;
+
+    button {
+      width: 50%;
+    }
   }
 }
 
@@ -209,6 +218,7 @@ img {
   justify-content: center;
   color: white;
   background-color: black;
+  font-size: 1rem;
 }
 
 .clicked {
@@ -224,8 +234,6 @@ img {
 
 ul > li > *:nth-child(2) {
   margin-right: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 #content ul > li > *:nth-child(3) {
@@ -355,6 +363,7 @@ li button {
 #form-buttons-container {
   width: 100%;
   display: flex;
+  gap: 5px;
   justify-content: space-evenly;
   margin-top: 15px;
 }
