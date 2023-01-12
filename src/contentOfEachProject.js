@@ -1,5 +1,5 @@
 import addTask from "./addTask";
-
+import { noTasksMessage } from "./messages";
 import { displayTasksOfEachProject } from "./displayTasks";
 
 //shows the content of each individual project
@@ -27,7 +27,12 @@ const contentOfEachProject = (name) => {
 
   document.body.appendChild(content);
 
-  addTaskButton.addEventListener("click", addTask);
+  addTaskButton.addEventListener("click", () => {
+    if (document.getElementById("message-container")) {
+      document.getElementById("message-container").remove();
+    }
+    addTask();
+  });
 };
 
 export default contentOfEachProject;

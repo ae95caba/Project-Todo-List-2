@@ -2,7 +2,7 @@ import { projectsObj } from "./projectsObj";
 import webStorageApi from "./webStorageApi";
 import isInToday from "./isInToday";
 import isInTheNextSevenDays from "./isInNextSevenDays";
-import { noTasksMessage } from "./noTasksMessage";
+import { noTasksMessage, howToUseMessage } from "./messages";
 
 function displayAllTasks(content) {
   let tasksUl = document.createElement("ul");
@@ -13,8 +13,12 @@ function displayAllTasks(content) {
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
       displaySingleTask(project, tasksUl, task, "displayAllTasks");
     });
-    content.appendChild(tasksUl);
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(howToUseMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 /// ul part
@@ -53,7 +57,9 @@ function displayTasksOfEachProject(content, tittle) {
         );
       }
     );
-  }
+  } /*  else {
+    content.appendChild(noTasksMessage());
+  } */
 }
 
 function displayNextSevenDaysTasks(content) {
@@ -91,9 +97,13 @@ function displayTodayTasks(content) {
       if (isInToday(projectsObj[project][task].date)) {
         displaySingleTask(project, tasksUl, task, "displayTodayTasks");
       }
-      content.appendChild(tasksUl);
     });
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 function displayImportantTasks(content) {
@@ -112,9 +122,13 @@ function displayImportantTasks(content) {
           "displayImportantTasks"
         );
       }
-      content.appendChild(tasksUl);
     });
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 function displaySingleTask(project, tasksUl, task, container2) {

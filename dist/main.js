@@ -5429,11 +5429,32 @@ function isInTheNextSevenDays(day) {
 
 /* harmony default export */ const isInNextSevenDays = (isInTheNextSevenDays);
 
-;// CONCATENATED MODULE: ./src/noTasksMessage.js
+;// CONCATENATED MODULE: ./src/messages.js
+const howToUseMessage = () => {
+  const messageContainer = document.createElement("div");
+  messageContainer.id = "message-container";
+
+  const messageTittle = document.createElement("h2");
+  messageTittle.innerText = "Crea una tarea !";
+
+  const messageInstrucctions = document.createElement("p");
+  /* const messageImg = document.createElement("img"); */
+
+  messageInstrucctions.innerHTML =
+    "Usa el menu para crear una nueva <strong>CATEGORIA</strong> donde se guardaran tus tareas. Ejemplo: <strong>COMPRAS</strong> donde guardaras las compras que no puedes olvidarte de hacer!";
+
+  /* messageImg.src = ""; */
+
+  messageContainer.appendChild(messageTittle);
+  messageContainer.appendChild(messageInstrucctions);
+  /* messageContainer.appendChild(messageImg); */
+
+  return messageContainer;
+};
 const noTasksMessage = () => {
   const messageContainer = document.createElement("div");
   messageContainer.id = "message-container";
-  const messageTittle = document.createElement("p");
+  const messageTittle = document.createElement("h2");
   messageTittle.innerText = "Felicidades, no hay tareas!";
   const messageImg = document.createElement("img");
   messageImg.src = "./anime.png";
@@ -5464,7 +5485,7 @@ function displayAllTasks(content) {
     });
   });
   if (tasksUl.innerHTML === "") {
-    content.appendChild(noTasksMessage());
+    content.appendChild(howToUseMessage());
   } else {
     content.appendChild(tasksUl);
   }
@@ -5506,9 +5527,9 @@ function displayTasksOfEachProject(content, tittle) {
         );
       }
     );
-  } else {
+  } /*  else {
     content.appendChild(noTasksMessage());
-  }
+  } */
 }
 
 function displayNextSevenDaysTasks(content) {
@@ -5878,7 +5899,12 @@ const contentOfEachProject = (name) => {
 
   document.body.appendChild(content);
 
-  addTaskButton.addEventListener("click", src_addTask);
+  addTaskButton.addEventListener("click", () => {
+    if (document.getElementById("message-container")) {
+      document.getElementById("message-container").remove();
+    }
+    src_addTask();
+  });
 };
 
 /* harmony default export */ const src_contentOfEachProject = (contentOfEachProject);
@@ -5972,7 +5998,8 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   const addProjectButton = document.getElementById("add-project-button");
   const projectsList = document.getElementById("projects-list");
   const input = document.getElementById("input"); //in projectLi
-  ///
+  /////////////////////
+  //creates elements of li
   const newLi = document.createElement("li");
   const newProjectButton = document.createElement("button"); //its the new created project
 
@@ -6009,6 +6036,7 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   );
   /////////////////////  ADD HIGHLITHED AND SELECTED CSS PROPERTIES ///////////////////////////
   mouseOverOutClick(newLi);
+  newProjectButton.click();
   ////
   deleteNewProject.addEventListener("click", () => {
     newLi.remove();

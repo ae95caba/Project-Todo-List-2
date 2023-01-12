@@ -60,9 +60,18 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
-#message-container p {
+#message-container h2 {
   font-weight: bolder;
   text-align: center;
+  font-size: 1.5rem;
+}
+#message-container p {
+  margin: 5px;
+  font-size: 1rem;
+  text-align: center;
+}
+#message-container strong {
+  font-size: 1rem;
 }
 #message-container img {
   width: 50vw;
@@ -129,6 +138,15 @@ form button {
 #sidebar button {
   font-size: 1.3rem !important;
 }
+#sidebar input {
+  font-size: 1rem;
+}
+
+.section-divider {
+  background-color: grey;
+  width: 100%;
+  height: 1px;
+}
 
 #projects,
 #home {
@@ -156,8 +174,8 @@ img {
   height: 5rem;
   padding: 4px 8px;
   gap: 10px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: auto;
+  border: 1px solid red;
 }
 
 #tasks-ul li p {
@@ -181,9 +199,9 @@ img {
 #add-project-button {
   display: flex;
   width: 100%;
-  padding: 0px;
+  padding: 5px 0px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   background-color: rgb(160, 160, 160);
 }
 
@@ -254,15 +272,15 @@ img {
 
 ul > li > *:nth-child(2) {
   margin-right: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 #tasks-ul > li > *:nth-child(2) {
   overflow: auto;
-  /*  p {
-    overflow: auto;
-  } */
+}
+#tasks-ul > li > *:nth-child(2) p {
+  width: 8rem !important;
+  height: 2rem !important;
+  white-space: nowrap;
 }
 
 #content ul > li > *:nth-child(3) {

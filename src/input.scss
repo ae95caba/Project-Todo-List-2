@@ -62,9 +62,18 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  p {
+  h2 {
     font-weight: bolder;
     text-align: center;
+    font-size: 1.5rem;
+  }
+  p {
+    margin: 5px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  strong {
+    font-size: 1rem;
   }
   img {
     width: 50vw;
@@ -133,6 +142,15 @@ form {
   button {
     font-size: 1.3rem !important;
   }
+  input {
+    font-size: 1rem;
+  }
+}
+
+.section-divider {
+  background-color: grey;
+  width: 100%;
+  height: 1px;
 }
 
 #projects,
@@ -162,8 +180,8 @@ img {
   height: 5rem;
   padding: 4px 8px;
   gap: 10px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: auto;
+  border: 1px solid red;
 }
 
 #tasks-ul li p {
@@ -187,9 +205,9 @@ img {
 #add-project-button {
   display: flex;
   width: 100%;
-  padding: 0px;
+  padding: 5px 0px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   background-color: rgb(160, 160, 160);
 }
 
@@ -244,6 +262,7 @@ img {
 #footer {
   display: flex;
   align-items: center;
+
   justify-content: center;
   color: white;
   background-color: black;
@@ -263,15 +282,16 @@ img {
 
 ul > li > *:nth-child(2) {
   margin-right: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 #tasks-ul > li > *:nth-child(2) {
   overflow: auto;
-  /*  p {
-    overflow: auto;
-  } */
+
+  p {
+    width: 8rem !important;
+    height: 2rem !important;
+    white-space: nowrap;
+  }
 }
 
 #content ul > li > *:nth-child(3) {

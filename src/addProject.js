@@ -9,7 +9,8 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   const addProjectButton = document.getElementById("add-project-button");
   const projectsList = document.getElementById("projects-list");
   const input = document.getElementById("input"); //in projectLi
-  ///
+  /////////////////////
+  //creates elements of li
   const newLi = document.createElement("li");
   const newProjectButton = document.createElement("button"); //its the new created project
 
@@ -46,6 +47,7 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   );
   /////////////////////  ADD HIGHLITHED AND SELECTED CSS PROPERTIES ///////////////////////////
   mouseOverOutClick(newLi);
+  newProjectButton.click();
   ////
   deleteNewProject.addEventListener("click", () => {
     newLi.remove();
