@@ -5506,6 +5506,8 @@ function displayTasksOfEachProject(content, tittle) {
         );
       }
     );
+  } else {
+    content.appendChild(noTasksMessage());
   }
 }
 
