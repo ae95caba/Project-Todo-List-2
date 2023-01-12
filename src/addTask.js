@@ -26,15 +26,18 @@ const addTask = () => {
 
   const tittleInput = document.createElement("input");
   tittleInput.type = "text";
+  tittleInput.maxLength = "40";
   tittleInput.id = "tittle-input";
+  tittleInput.setAttribute("required", "");
+  /* tittleInput.required = true; */
 
   const detailsLabel = document.createElement("label");
   detailsLabel.for = "details-input";
   detailsLabel.innerText = "Detalles(opcional):";
 
   const detailsInput = document.createElement("input");
-
   detailsInput.id = "details-input";
+  detailsInput.maxLength = "40";
 
   const dateLabel = document.createElement("label");
   dateLabel.for = "date-input";

@@ -11,7 +11,7 @@
 
 #todos-li {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 #projects-list {
@@ -27,10 +27,15 @@
 }
 
 #header {
+  width: 100%;
+  background-color: palevioletred;
+  position: sticky;
+  top: 0;
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   font-size: 2rem;
+  height: auto;
   align-items: center;
   padding: 12px;
 }
@@ -51,10 +56,10 @@
 body {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  grid-template-rows: 2fr 12fr 1fr;
-  border: 2px solid red;
+  grid-template-rows: 1fr 20fr 1fr;
   min-height: 100vh;
   height: auto !important;
+  width: 100vw;
 }
 
 svg {
@@ -86,6 +91,10 @@ form button {
   grid-row: 3/4;
   grid-column: 1/3;
   text-align: center;
+}
+
+#open-logging {
+  display: none;
 }
 
 #sidebar {
@@ -155,12 +164,11 @@ img {
 
 #add-project-button {
   display: flex;
-  gap: 6px;
+  width: 100%;
   padding: 0px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: rgb(160, 160, 160);
-  border-radius: 10px;
 }
 
 #add-project-button button {
@@ -214,7 +222,7 @@ img {
   justify-content: center;
   color: white;
   background-color: black;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .clicked {
@@ -230,6 +238,15 @@ img {
 
 ul > li > *:nth-child(2) {
   margin-right: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#tasks-ul > li > *:nth-child(2) {
+  overflow: auto;
+  /*  p {
+    overflow: auto;
+  } */
 }
 
 #content ul > li > *:nth-child(3) {
@@ -241,7 +258,7 @@ ul > li > *:nth-child(2) {
 }
 
 #menu {
-  width: 3rem;
+  width: 3.5rem;
   border: 1px solid;
   padding: 5px;
   border-radius: 10px;
@@ -266,7 +283,7 @@ ul > li > *:nth-child(2) {
     border-radius: 50% !important;
     width: 25vw;
     height: 25vw;
-    position: absolute;
+    position: fixed;
     right: 10%;
     bottom: 10%;
     color: white;
@@ -276,7 +293,7 @@ ul > li > *:nth-child(2) {
     display: flex;
   }
   form {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     left: 50%;
     top: 50%;
@@ -289,7 +306,7 @@ ul > li > *:nth-child(2) {
   #sidebar {
     display: none;
     z-index: 1;
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: 0px;
     background-color: white;
@@ -334,7 +351,7 @@ li button {
   background-color: black;
   color: white;
   font-weight: 600;
-  font-size: 2rem !important;
+  font-size: 1.7rem !important;
 }
 
 #add-task-button {
