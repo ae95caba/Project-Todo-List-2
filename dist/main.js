@@ -5462,8 +5462,12 @@ function displayAllTasks(content) {
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
       displaySingleTask(project, tasksUl, task, "displayAllTasks");
     });
-    content.appendChild(tasksUl);
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 /// ul part
@@ -5540,9 +5544,13 @@ function displayTodayTasks(content) {
       if (src_isInToday(projectsObj[project][task].date)) {
         displaySingleTask(project, tasksUl, task, "displayTodayTasks");
       }
-      content.appendChild(tasksUl);
     });
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 function displayImportantTasks(content) {
@@ -5561,9 +5569,13 @@ function displayImportantTasks(content) {
           "displayImportantTasks"
         );
       }
-      content.appendChild(tasksUl);
     });
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 function displaySingleTask(project, tasksUl, task, container2) {
