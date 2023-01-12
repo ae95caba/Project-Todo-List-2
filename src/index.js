@@ -1,11 +1,11 @@
 import { actuallyAddProject, addProject } from "./addProject";
 import contentOfEachProject from "./contentOfEachProject";
-import mouseOverOutClick from "./mouseOverOutClick";
+
 import { projectsObj } from "./projectsObj";
 import initFirebase from "./login";
 import contentOfTabs from "./contentOfTabs";
-import burgerMenu from "./burgerMenu";
-import { loggingForm } from "./dom";
+
+import { loggingForm, burgerMenu, mouseOverOutClick } from "./dom";
 
 loggingForm.addCloseEvent();
 loggingForm.addOpenEvent();

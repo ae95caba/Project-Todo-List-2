@@ -4,8 +4,10 @@ import { displayTasksOfEachProject } from "./displayTasks";
 
 import webStorageApi from "./webStorageApi";
 
+// form part
+
 const addTask = () => {
-  /// gets elements
+  /// gets elements need to add a tasks
   const addTaskButton = document.getElementById("add-task-button");
   const content = document.getElementById("content");
   const tittle = document.getElementById("tittle");
@@ -13,7 +15,8 @@ const addTask = () => {
 
   addTaskButton.style.display = "none";
 
-  /// creates form
+  //////////////////////  form //////////////////////
+
   const form = document.createElement("form");
   form.id = "form";
 
@@ -61,17 +64,21 @@ const addTask = () => {
   form.appendChild(cancelButton);
 
   content.appendChild(form);
-  // ends form creation //
 
   addButton.addEventListener("click", () => {
+    //save form data to storage
     projectsObj[tittle.innerText][tittleInput.value] = {};
     projectsObj[tittle.innerText][tittleInput.value] = {
       details: detailsInput.value,
       date: dateInput.value,
     };
     webStorageApi();
+    ////////////////////////////////
+
     addTaskButton.style.display = "inline";
-    form.style.display = "none";
+    form.remove();
+
+    ////////////////////////////
     displayTasksOfEachProject(content, addTaskButton, tittle);
   });
 
@@ -79,6 +86,8 @@ const addTask = () => {
     form.remove();
     addTaskButton.style.display = "inline";
   });
+
+  //////////////// ends form creation ////////////////
 };
 
 export default addTask;

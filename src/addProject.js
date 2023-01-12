@@ -1,5 +1,5 @@
 import contentOfEachProject from "./contentOfEachProject";
-import mouseOverOutClick from "./mouseOverOutClick";
+import { mouseOverOutClick } from "./dom";
 import { projectsObj } from "./projectsObj";
 import webStorageApi from "./webStorageApi";
 
