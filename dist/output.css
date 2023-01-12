@@ -53,10 +53,26 @@
   width: 35px;
 }
 
+#message-container {
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#message-container p {
+  font-weight: bolder;
+  text-align: center;
+}
+#message-container img {
+  width: 50vw;
+  border-radius: 20px;
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 20fr 1fr;
+  grid-template-rows: 12vh 6fr 8vh;
   min-height: 100vh;
   height: auto !important;
   width: 100vw;

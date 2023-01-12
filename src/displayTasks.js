@@ -2,6 +2,7 @@ import { projectsObj } from "./projectsObj";
 import webStorageApi from "./webStorageApi";
 import isInToday from "./isInToday";
 import isInTheNextSevenDays from "./isInNextSevenDays";
+import { noTasksMessage } from "./noTasksMessage";
 
 function displayAllTasks(content) {
   let tasksUl = document.createElement("ul");
@@ -10,7 +11,7 @@ function displayAllTasks(content) {
   Object.getOwnPropertyNames(projectsObj).forEach((project) => {
     //make an array with all the tasks
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
-      displaySingleTask(project, tasksUl, task, content, "displayAllTasks");
+      displaySingleTask(project, tasksUl, task, "displayAllTasks");
     });
     content.appendChild(tasksUl);
   });
@@ -47,7 +48,7 @@ function displayTasksOfEachProject(content, tittle) {
           tittle.innerText,
           tasksUl,
           task,
-          content,
+
           "displayTasksOfEachProject"
         );
       }
@@ -71,9 +72,13 @@ function displayNextSevenDaysTasks(content) {
           "displayNextSevenDaysTasks"
         );
       }
-      content.appendChild(tasksUl);
     });
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 function displayTodayTasks(content) {
@@ -84,7 +89,7 @@ function displayTodayTasks(content) {
     //make an array with all the tasks
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
       if (isInToday(projectsObj[project][task].date)) {
-        displaySingleTask(project, tasksUl, task, content, "displayTodayTasks");
+        displaySingleTask(project, tasksUl, task, "displayTodayTasks");
       }
       content.appendChild(tasksUl);
     });
@@ -103,7 +108,7 @@ function displayImportantTasks(content) {
           project,
           tasksUl,
           task,
-          content,
+
           "displayImportantTasks"
         );
       }
@@ -112,7 +117,7 @@ function displayImportantTasks(content) {
   });
 }
 
-function displaySingleTask(project, tasksUl, task, content, container2) {
+function displaySingleTask(project, tasksUl, task, container2) {
   const divForTaskAndDetails = document.createElement("div");
 
   const taskLi = document.createElement("li");

@@ -5429,7 +5429,25 @@ function isInTheNextSevenDays(day) {
 
 /* harmony default export */ const isInNextSevenDays = (isInTheNextSevenDays);
 
+;// CONCATENATED MODULE: ./src/noTasksMessage.js
+const noTasksMessage = () => {
+  const messageContainer = document.createElement("div");
+  messageContainer.id = "message-container";
+  const messageTittle = document.createElement("p");
+  messageTittle.innerText = "Felicidades, no hay tareas!";
+  const messageImg = document.createElement("img");
+  messageImg.src = "./anime.png";
+
+  messageContainer.appendChild(messageTittle);
+  messageContainer.appendChild(messageImg);
+
+  return messageContainer;
+};
+
+
+
 ;// CONCATENATED MODULE: ./src/displayTasks.js
+
 
 
 
@@ -5442,7 +5460,7 @@ function displayAllTasks(content) {
   Object.getOwnPropertyNames(projectsObj).forEach((project) => {
     //make an array with all the tasks
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
-      displaySingleTask(project, tasksUl, task, content, "displayAllTasks");
+      displaySingleTask(project, tasksUl, task, "displayAllTasks");
     });
     content.appendChild(tasksUl);
   });
@@ -5479,7 +5497,7 @@ function displayTasksOfEachProject(content, tittle) {
           tittle.innerText,
           tasksUl,
           task,
-          content,
+
           "displayTasksOfEachProject"
         );
       }
@@ -5503,9 +5521,13 @@ function displayNextSevenDaysTasks(content) {
           "displayNextSevenDaysTasks"
         );
       }
-      content.appendChild(tasksUl);
     });
   });
+  if (tasksUl.innerHTML === "") {
+    content.appendChild(noTasksMessage());
+  } else {
+    content.appendChild(tasksUl);
+  }
 }
 
 function displayTodayTasks(content) {
@@ -5516,7 +5538,7 @@ function displayTodayTasks(content) {
     //make an array with all the tasks
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
       if (src_isInToday(projectsObj[project][task].date)) {
-        displaySingleTask(project, tasksUl, task, content, "displayTodayTasks");
+        displaySingleTask(project, tasksUl, task, "displayTodayTasks");
       }
       content.appendChild(tasksUl);
     });
@@ -5535,7 +5557,7 @@ function displayImportantTasks(content) {
           project,
           tasksUl,
           task,
-          content,
+
           "displayImportantTasks"
         );
       }
@@ -5544,7 +5566,7 @@ function displayImportantTasks(content) {
   });
 }
 
-function displaySingleTask(project, tasksUl, task, content, container2) {
+function displaySingleTask(project, tasksUl, task, container2) {
   const divForTaskAndDetails = document.createElement("div");
 
   const taskLi = document.createElement("li");
