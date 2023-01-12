@@ -18,6 +18,10 @@
   justify-content: center;
 }
 
+#content p {
+  font-size: 1.3rem !important;
+}
+
 #projects-list li {
   width: 100% !important;
 }
@@ -48,7 +52,9 @@ body {
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 2fr 12fr 1fr;
-  height: 100vh;
+  border: 2px solid red;
+  min-height: 100vh;
+  height: auto !important;
 }
 
 svg {
@@ -63,6 +69,17 @@ form {
   flex-direction: column;
   align-self: center;
   border-radius: 15px;
+  border: 1px solid grey;
+}
+form label {
+  font-size: 1.3rem;
+}
+form input {
+  font-size: 1.3rem;
+}
+form button {
+  font-size: 1.3rem;
+  width: 100% !important;
 }
 
 #footer {
@@ -76,8 +93,16 @@ form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 15px;
+  padding: 5px;
   border: 1px solid grey;
+}
+#sidebar p {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bolder;
+}
+#sidebar button {
+  font-size: 1.3rem !important;
 }
 
 #projects,
@@ -103,10 +128,11 @@ img {
   border-bottom: 1px solid grey;
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 5rem;
   padding: 4px 8px;
   gap: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #tasks-ul li p {
@@ -120,9 +146,11 @@ img {
 }
 
 .cancel {
-  background-color: red !important;
+  background-color: black !important;
+  color: white;
   padding: 5px !important;
   border-radius: 5px;
+  width: 5rem;
 }
 
 #add-project-button {
@@ -131,9 +159,8 @@ img {
   padding: 0px;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  background-color: rgb(160, 160, 160);
   border-radius: 20px;
-  margin-top: 10px;
 }
 
 #add-project-button button {
@@ -144,9 +171,8 @@ img {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 14px;
-  padding: 5px;
   align-items: center;
+  justify-items: center;
 }
 
 .new-li,
@@ -161,6 +187,9 @@ img {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 10px;
+}
+#new-project-li button {
+  width: 100%;
 }
 
 #new-project-li input {
@@ -192,6 +221,8 @@ img {
 
 ul > li > *:nth-child(2) {
   margin-right: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #content ul > li > *:nth-child(3) {
@@ -203,7 +234,10 @@ ul > li > *:nth-child(2) {
 }
 
 #menu {
-  width: 50px;
+  width: 3rem;
+  border: 1px solid;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 #logging-form > button:first-of-type {
@@ -223,21 +257,23 @@ ul > li > *:nth-child(2) {
 @media only screen and (max-width: 600px) {
   #add-task-button {
     border-radius: 50% !important;
-    width: 20vw;
-    height: 20vw;
+    width: 25vw;
+    height: 25vw;
     position: absolute;
-    right: 5%;
-    bottom: 15%;
+    right: 10%;
+    bottom: 10%;
     color: white;
+    font-size: 1.3rem;
   }
   #logging-form {
     display: flex;
   }
   form {
     position: absolute;
-    top: 20%;
-    left: 20%;
     z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   #content {
     grid-column: 1/3 !important;
@@ -276,20 +312,22 @@ li button {
   border-radius: 5px;
   padding: 5px;
   background-color: transparent;
+  font-size: 1rem;
 }
 
 .new-li,
 #todos-li {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  justify-items: center;
 }
 
-#tittle {
+#content #tittle {
   padding: 15px;
   background-color: black;
   color: white;
   font-weight: 600;
-  font-size: 19px;
+  font-size: 2rem !important;
 }
 
 #add-task-button {
@@ -303,10 +341,22 @@ li button {
   border-radius: 5px;
   padding: 5px;
   font-weight: bolder;
+  width: 5rem;
+}
+
+#form-buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
 }
 
 input {
-  border: solid 1px black;
+  border: solid 1px grey;
+  width: 100%;
+  text-align: center;
+  border-radius: 15px;
+  padding: 4px;
 }
 
 form {

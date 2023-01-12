@@ -48,10 +48,16 @@ const addTask = () => {
   addButton.innerText = "Añadir";
   addButton.className = "add";
 
+  const formButtonsContainer = document.createElement("div");
+  formButtonsContainer.id = "form-buttons-container";
+
   const cancelButton = document.createElement("button");
   cancelButton.type = "button";
   cancelButton.innerText = "Cancelar";
   cancelButton.className = "cancel";
+
+  formButtonsContainer.appendChild(addButton);
+  formButtonsContainer.appendChild(cancelButton);
 
   form.appendChild(tittleLabel);
   form.appendChild(tittleInput);
@@ -59,9 +65,7 @@ const addTask = () => {
   form.appendChild(detailsInput);
   form.appendChild(dateLabel);
   form.appendChild(dateInput);
-
-  form.appendChild(addButton);
-  form.appendChild(cancelButton);
+  form.appendChild(formButtonsContainer);
 
   content.appendChild(form);
 
