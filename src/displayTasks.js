@@ -1,5 +1,5 @@
 import { projectsObj } from "./projectsObj";
-
+import webStorageApi from "./webStorageApi";
 import isInToday from "./isInToday";
 import isInTheNextSevenDays from "./isInNextSevenDays";
 
@@ -12,11 +12,12 @@ function displayAllTasks(content) {
     Object.getOwnPropertyNames(projectsObj[project]).forEach((task) => {
       displaySingleTask(project, tasksUl, task, content, "displayAllTasks");
     });
+    content.appendChild(tasksUl);
   });
 }
 
 /// ul part
-function displayTasksOfEachProject(content, addTaskButton, tittle) {
+function displayTasksOfEachProject(content, tittle) {
   //i put this variable here to avoid scope conflict further down this code
   let tasksUl = null;
 
@@ -26,14 +27,15 @@ function displayTasksOfEachProject(content, addTaskButton, tittle) {
       //if there is not already an ul makes one
       tasksUl = document.createElement("ul");
       tasksUl.id = "tasks-ul";
-      content.insertBefore(tasksUl, addTaskButton);
+
+      tittle.after(tasksUl);
     } else {
       //if there is already an ul made by this function ,
       // removes it and makes another because otherwise there will be more than 1 ul
       document.getElementById("tasks-ul").remove();
       tasksUl = document.createElement("ul");
       tasksUl.id = "tasks-ul";
-      content.insertBefore(tasksUl, addTaskButton);
+      tittle.after(tasksUl);
     }
     //////////////////////////////
 
@@ -69,6 +71,7 @@ function displayNextSevenDaysTasks(content) {
           "displayNextSevenDaysTasks"
         );
       }
+      content.appendChild(tasksUl);
     });
   });
 }
@@ -83,6 +86,7 @@ function displayTodayTasks(content) {
       if (isInToday(projectsObj[project][task].date)) {
         displaySingleTask(project, tasksUl, task, content, "displayTodayTasks");
       }
+      content.appendChild(tasksUl);
     });
   });
 }
@@ -103,13 +107,12 @@ function displayImportantTasks(content) {
           "displayImportantTasks"
         );
       }
+      content.appendChild(tasksUl);
     });
   });
 }
 
 function displaySingleTask(project, tasksUl, task, content, container2) {
-  const container = container2;
-
   const divForTaskAndDetails = document.createElement("div");
 
   const taskLi = document.createElement("li");
@@ -152,7 +155,7 @@ function displaySingleTask(project, tasksUl, task, content, container2) {
       taskDate.innerText = "Sin fecha";
     }
     webStorageApi();
-    if (container == displayNextSevenDaysTasks) {
+    if (container2 == displayNextSevenDaysTasks) {
       if (!isInTheNextSevenDays(projectsObj[project][task].date)) {
         taskLi.remove();
         if (tasksUl.innerHTML == "") {
@@ -160,7 +163,7 @@ function displaySingleTask(project, tasksUl, task, content, container2) {
         }
       }
     }
-    if (container == "displayTodayTasks") {
+    if (container2 == "displayTodayTasks") {
       if (!isInToday(projectsObj[project][task].date)) {
         taskLi.remove();
         if (tasksUl.innerHTML == "") {
@@ -225,7 +228,7 @@ function displaySingleTask(project, tasksUl, task, content, container2) {
       projectsObj[project][task].isImportant = true;
       webStorageApi();
     } else {
-      if (container === "displayImportantTasks") {
+      if (container2 === "displayImportantTasks") {
         taskLi.remove();
 
         if (tasksUl.innerHTML == "") {
@@ -267,9 +270,10 @@ function displaySingleTask(project, tasksUl, task, content, container2) {
   taskLi.appendChild(deleteButton);
 
   tasksUl.appendChild(taskLi);
-  if (content !== "displayTasksOfEachProject") {
+  /* if (container2 !== "displayTasksOfEachProject") {
+    console.log("hola hijoeputa");
     content.appendChild(tasksUl);
-  }
+  }*/
 }
 
 export {

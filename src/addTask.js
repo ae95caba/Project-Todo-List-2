@@ -79,7 +79,7 @@ const addTask = () => {
     form.remove();
 
     ////////////////////////////
-    displayTasksOfEachProject(content, addTaskButton, tittle);
+    displayTasksOfEachProject(content, tittle);
   });
 
   cancelButton.addEventListener("click", () => {

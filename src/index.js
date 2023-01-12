@@ -60,4 +60,5 @@ const addProjectLi = document.getElementById("add-project-button");
 mouseOverOutClick(addProjectLi, false);
 
 addProject();
+contentOfTabsFilters(allTasksButton.innerText, "all");
 /* contentOfEachProject(todosButton.innerText); */

@@ -21,9 +21,9 @@ const contentOfEachProject = (name) => {
 
   content.appendChild(tittle);
 
-  content.appendChild(addTaskButton);
+  displayTasksOfEachProject(content, tittle);
 
-  displayTasksOfEachProject(content, addTaskButton, tittle);
+  content.appendChild(addTaskButton);
 
   document.body.appendChild(content);
 
