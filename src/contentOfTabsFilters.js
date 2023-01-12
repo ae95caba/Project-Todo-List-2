@@ -5,7 +5,9 @@ import {
   displayAllTasks,
 } from "./displayTasks";
 
-const contentOfTabs = (name, type) => {
+//
+
+const contentOfTabsFilters = (name, type) => {
   const currentContent = document.getElementById("content");
   currentContent.remove();
 
@@ -35,4 +37,4 @@ const contentOfTabs = (name, type) => {
   }
 };
 
-export default contentOfTabs;
+export default contentOfTabsFilters;

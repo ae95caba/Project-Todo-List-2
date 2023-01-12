@@ -3,7 +3,7 @@ import contentOfEachProject from "./contentOfEachProject";
 
 import { projectsObj } from "./projectsObj";
 import initFirebase from "./login";
-import contentOfTabs from "./contentOfTabs";
+import contentOfTabsFilters from "./contentOfTabsFilters";
 
 import { loggingForm, burgerMenu, mouseOverOutClick } from "./dom";
 
@@ -26,22 +26,22 @@ Object.getOwnPropertyNames(projectsObj).forEach((project) => {
 
 const importantButton = document.getElementById("important");
 importantButton.addEventListener("click", () =>
-  contentOfTabs(importantButton.innerText, "important")
+  contentOfTabsFilters(importantButton.innerText, "important")
 );
 
 const allTasksButton = document.getElementById("all-tasks");
 allTasksButton.addEventListener("click", () =>
-  contentOfTabs(allTasksButton.innerText, "all")
+  contentOfTabsFilters(allTasksButton.innerText, "all")
 );
 
 const todayButton = document.getElementById("today");
 todayButton.addEventListener("click", () =>
-  contentOfTabs(todayButton.innerText, "today")
+  contentOfTabsFilters(todayButton.innerText, "today")
 );
 
 const nextSevenDaysButton = document.getElementById("next-seven-days");
 nextSevenDaysButton.addEventListener("click", () =>
-  contentOfTabs(nextSevenDaysButton.innerText, "seven")
+  contentOfTabsFilters(nextSevenDaysButton.innerText, "seven")
 );
 
 /* const todosButton = document.getElementById("todos");
