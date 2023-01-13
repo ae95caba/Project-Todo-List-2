@@ -71,6 +71,12 @@ const burgerMenu = () => {
 
   const burgerMenu = document.getElementById("burger-menu");
   burgerMenu.addEventListener("click", () => {
+    setTimeout(() => {
+      burgerMenu.classList.add("animate__pulse", "animate__faster");
+      setTimeout(() => {
+        burgerMenu.classList.remove("animate__pulse", "animate__faster");
+      }, 1000);
+    }, 0);
     /*  burgerMenu.classList.add("animate__pulse");
     burgerMenu.classList.remove("animate__pulse"); */
     toggleNav();

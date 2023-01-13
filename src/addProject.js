@@ -47,7 +47,12 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   );
   /////////////////////  ADD HIGHLITHED AND SELECTED CSS PROPERTIES ///////////////////////////
   mouseOverOutClick(newLi);
-  newProjectButton.click();
+
+  if (notForIndexJs) {
+    newProjectButton.click();
+  }
+  //newProjectButton.click();
+
   ////
   deleteNewProject.addEventListener("click", () => {
     const isUserSure = confirm(

@@ -5901,6 +5901,12 @@ const contentOfEachProject = (name) => {
   addTaskButton.id = "add-task-button";
   addTaskButton.innerText = "Añadir tarea";
   addTaskButton.className = "add";
+  addTaskButton.classList.add(
+    "animate__animated",
+    "animate__pulse",
+    "animate__infinite",
+    "animate__slower"
+  );
 
   content.appendChild(tittle);
 
@@ -5994,6 +6000,12 @@ const burgerMenu = () => {
 
   const burgerMenu = document.getElementById("burger-menu");
   burgerMenu.addEventListener("click", () => {
+    setTimeout(() => {
+      burgerMenu.classList.add("animate__pulse", "animate__faster");
+      setTimeout(() => {
+        burgerMenu.classList.remove("animate__pulse", "animate__faster");
+      }, 1000);
+    }, 0);
     /*  burgerMenu.classList.add("animate__pulse");
     burgerMenu.classList.remove("animate__pulse"); */
     toggleNav();
@@ -6078,7 +6090,12 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   );
   /////////////////////  ADD HIGHLITHED AND SELECTED CSS PROPERTIES ///////////////////////////
   mouseOverOutClick(newLi);
-  newProjectButton.click();
+
+  if (notForIndexJs) {
+    newProjectButton.click();
+  }
+  //newProjectButton.click();
+
   ////
   deleteNewProject.addEventListener("click", () => {
     const isUserSure = confirm(

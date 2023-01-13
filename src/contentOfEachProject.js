@@ -18,6 +18,12 @@ const contentOfEachProject = (name) => {
   addTaskButton.id = "add-task-button";
   addTaskButton.innerText = "Añadir tarea";
   addTaskButton.className = "add";
+  addTaskButton.classList.add(
+    "animate__animated",
+    "animate__pulse",
+    "animate__infinite",
+    "animate__slower"
+  );
 
   content.appendChild(tittle);
 
