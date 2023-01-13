@@ -50,6 +50,7 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   newProjectButton.click();
   ////
   deleteNewProject.addEventListener("click", () => {
+    confirm("Estas seguro de querer borrar tu categoria?");
     newLi.remove();
     delete projectsObj[newProjectButton.innerText];
     webStorageApi();
@@ -80,6 +81,7 @@ const addProject = () => {
   addProjectButton.addEventListener("click", () => {
     addProjectButton.style.display = "none";
     projectLi.classList.remove("hidden");
+    //projectLi.classList.add("animate__animated")
   });
 
   cancelButton.addEventListener("click", () => {

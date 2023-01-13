@@ -5950,45 +5950,54 @@ const loggingForm = {
 
 const burgerMenu = () => {
   const sideBar = document.getElementById("sidebar");
+  let isOpen = sideBar.style.display === "flex";
+
   function closeOnClickOut(e) {
     if (e.target.closest("#sidebar") == null) {
       closeNav();
-      sideBar.classList.add("animate__slideOutRight");
+
       document.removeEventListener("click", closeOnClickOut);
     }
   }
 
   function openNav() {
+    if (sideBar.classList.contains("animate__slideOutRight")) {
+      sideBar.classList.remove("animate__slideOutRight");
+    }
     sideBar.style.display = "flex";
-    //sideBar.classList.add("animate__animated", "animate__slideInRight");
+    sideBar.classList.add("animate__slideInRight");
     setTimeout(() => {
       document.addEventListener("click", closeOnClickOut);
-    }, 10);
+    }, 5);
+
+    isOpen = true;
   }
 
   function closeNav() {
+    if (sideBar.classList.contains("animate__slideinRight")) {
+      sideBar.classList.remove("animate__slideinRight");
+    }
+    sideBar.classList.add("animate__slideOutRight");
     setTimeout(() => {
       sideBar.style.display = "none";
     }, 1000);
-
-    //sideBar.classList.remove("animate__slideInRight");
-    //sideBar.classList.add("animate__slideOutRight");
+    isOpen = false;
   }
 
   function toggleNav() {
-    if (sideBar.style.display !== "flex") {
+    if (!isOpen) {
       openNav();
-      if (sideBar.classList.contains("animate__slideOutRight")) {
-        sideBar.classList.remove("animate__slideOutRight");
-      }
     } else {
       closeNav();
-      sideBar.classList.add("animate__slideOutRight");
     }
   }
 
   const burgerMenu = document.getElementById("burger-menu");
-  burgerMenu.addEventListener("click", () => toggleNav());
+  burgerMenu.addEventListener("click", () => {
+    /*  burgerMenu.classList.add("animate__pulse");
+    burgerMenu.classList.remove("animate__pulse"); */
+    toggleNav();
+  });
 };
 
 const mouseOverOutClick = (button, clickedClass = true) => {
@@ -6072,6 +6081,7 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   newProjectButton.click();
   ////
   deleteNewProject.addEventListener("click", () => {
+    confirm("Estas seguro de querer borrar tu categoria?");
     newLi.remove();
     delete projectsObj[newProjectButton.innerText];
     src_webStorageApi();
@@ -6102,6 +6112,7 @@ const addProject = () => {
   addProjectButton.addEventListener("click", () => {
     addProjectButton.style.display = "none";
     projectLi.classList.remove("hidden");
+    //projectLi.classList.add("animate__animated")
   });
 
   cancelButton.addEventListener("click", () => {
