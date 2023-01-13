@@ -147,6 +147,8 @@ function displaySingleTask(project, tasksUl, task, container2) {
   if (projectsObj[project][task].details) {
     taskP.innerText += ":";
     taskDetails.innerText += projectsObj[project][task].details;
+  } else {
+    taskDetails.remove();
   }
   taskLi.appendChild(divForTaskAndDetails);
   /////////////////////////////////////////////

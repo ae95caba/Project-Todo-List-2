@@ -5441,7 +5441,7 @@ const howToUseMessage = () => {
   /* const messageImg = document.createElement("img"); */
 
   messageInstrucctions.innerHTML =
-    "Usa el menu para crear una nueva <strong>CATEGORIA</strong> donde se guardaran tus tareas. Ejemplo: <strong>COMPRAS</strong> donde guardaras las compras que no puedes olvidarte de hacer!";
+    "Usa el <strong>MENU</strong> para crear una nueva <strong>CATEGORIA</strong> donde se guardaran tus tareas.<br> Ejemplo: <strong>COMPRAS</strong> donde guardaras las compras que no puedes olvidarte de hacer!";
 
   /* messageImg.src = ""; */
 
@@ -5617,6 +5617,8 @@ function displaySingleTask(project, tasksUl, task, container2) {
   if (projectsObj[project][task].details) {
     taskP.innerText += ":";
     taskDetails.innerText += projectsObj[project][task].details;
+  } else {
+    taskDetails.remove();
   }
   taskLi.appendChild(divForTaskAndDetails);
   /////////////////////////////////////////////
@@ -5774,6 +5776,7 @@ function displaySingleTask(project, tasksUl, task, container2) {
 
 
 
+
 // form part
 
 const addTask = () => {
@@ -5847,7 +5850,9 @@ const addTask = () => {
 
   content.appendChild(form);
 
-  addButton.addEventListener("click", (e) => {
+  /* addButton.addEventListener("click", () => { */
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     //save form data to storage
     projectsObj[tittle.innerText][tittleInput.value] = {};
     projectsObj[tittle.innerText][tittleInput.value] = {
@@ -6066,6 +6071,9 @@ const addProject = () => {
   const cancelButton = document.querySelector(".cancel"); //in projectLi
 
   const input = document.getElementById("input"); //in projectLi
+
+  const addProjectForm = document.getElementById("add-project-form");
+
   ///
 
   addProjectButton.addEventListener("click", () => {
@@ -6079,7 +6087,10 @@ const addProject = () => {
     input.value = "";
   });
 
-  addButton.addEventListener("click", () => {
+  /* addButton.addEventListener("click" */
+
+  addProjectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     actuallyAddProject();
   });
 };

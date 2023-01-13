@@ -9,7 +9,7 @@ const howToUseMessage = () => {
   /* const messageImg = document.createElement("img"); */
 
   messageInstrucctions.innerHTML =
-    "Usa el menu para crear una nueva <strong>CATEGORIA</strong> donde se guardaran tus tareas. Ejemplo: <strong>COMPRAS</strong> donde guardaras las compras que no puedes olvidarte de hacer!";
+    "Usa el <strong>MENU</strong> para crear una nueva <strong>CATEGORIA</strong> donde se guardaran tus tareas.<br> Ejemplo: <strong>COMPRAS</strong> donde guardaras las compras que no puedes olvidarte de hacer!";
 
   /* messageImg.src = ""; */
 

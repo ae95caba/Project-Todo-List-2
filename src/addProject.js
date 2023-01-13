@@ -72,6 +72,9 @@ const addProject = () => {
   const cancelButton = document.querySelector(".cancel"); //in projectLi
 
   const input = document.getElementById("input"); //in projectLi
+
+  const addProjectForm = document.getElementById("add-project-form");
+
   ///
 
   addProjectButton.addEventListener("click", () => {
@@ -85,7 +88,10 @@ const addProject = () => {
     input.value = "";
   });
 
-  addButton.addEventListener("click", () => {
+  /* addButton.addEventListener("click" */
+
+  addProjectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     actuallyAddProject();
   });
 };

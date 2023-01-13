@@ -3,6 +3,7 @@ import { projectsObj } from "./projectsObj";
 import { displayTasksOfEachProject } from "./displayTasks";
 
 import webStorageApi from "./webStorageApi";
+import { formatRFC3339 } from "date-fns";
 
 // form part
 
@@ -77,7 +78,9 @@ const addTask = () => {
 
   content.appendChild(form);
 
-  addButton.addEventListener("click", (e) => {
+  /* addButton.addEventListener("click", () => { */
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     //save form data to storage
     projectsObj[tittle.innerText][tittleInput.value] = {};
     projectsObj[tittle.innerText][tittleInput.value] = {

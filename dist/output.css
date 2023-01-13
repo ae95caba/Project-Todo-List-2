@@ -55,23 +55,27 @@
 
 #message-container {
   height: auto;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 60%;
+  transform: translate(-50%, -60%);
 }
 #message-container h2 {
   font-weight: bolder;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 #message-container p {
   margin: 5px;
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
 }
 #message-container strong {
   font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #message-container img {
   width: 50vw;
@@ -92,7 +96,7 @@ svg {
   height: 1.5rem !important;
 }
 
-form {
+#content form {
   background-color: white;
   padding: 20px;
   display: flex;
@@ -101,13 +105,13 @@ form {
   border-radius: 15px;
   border: 1px solid grey;
 }
-form label {
+#content form label {
   font-size: 1.3rem;
 }
-form input {
+#content form input {
   font-size: 1.3rem;
 }
-form button {
+#content form button {
   font-size: 1.3rem;
   padding: 10px 0px !important;
   width: 100% !important;
@@ -128,7 +132,7 @@ form button {
   grid-row: 2/3;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   border: 1px solid grey;
 }
 #sidebar p {
@@ -172,7 +176,6 @@ img {
 #tasks-ul li {
   border-bottom: 1px solid grey;
   display: grid;
-  border: 1px solid red;
   grid-template-columns: 1fr 6fr 2fr 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
@@ -233,21 +236,21 @@ img {
   align-items: center;
 }
 
-#new-project-li {
+#new-project-li form {
   display: grid;
-  margin: 10px 0px;
-  padding: 5px;
+  margin-top: 0px;
+  padding: 10px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 10px;
 }
-#new-project-li #project-buttons-container {
+#new-project-li form #project-buttons-container {
   grid-column: 1/3;
   display: flex;
   gap: 5px;
   width: 100% !important;
 }
-#new-project-li #project-buttons-container button {
+#new-project-li form #project-buttons-container button {
   width: 50%;
 }
 
@@ -285,14 +288,14 @@ ul > li > *:nth-child(2) {
 
 #tasks-ul > li > *:nth-child(2) {
   overflow: auto;
+  /* p:first-of-type {
+    text-decoration: underline !important;
+  }*/
 }
 #tasks-ul > li > *:nth-child(2) p {
   width: 8rem !important;
   height: 2rem !important;
   white-space: nowrap;
-}
-#tasks-ul > li > *:nth-child(2) p:first-of-type {
-  text-decoration: underline !important;
 }
 
 #content ul > li > *:nth-child(3) {
@@ -336,9 +339,10 @@ ul > li > *:nth-child(2) {
     font-size: 1.3rem;
   }
   #logging-form {
-    display: flex;
+    /* display: flex; */
+    display: none;
   }
-  form {
+  #content form {
     position: fixed;
     z-index: 1;
     left: 50%;

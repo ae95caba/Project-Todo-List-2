@@ -98,11 +98,13 @@
             <button>Crear</button>
           </li>
           <li id="new-project-li" class="hidden">
-            <input type="text" maxlength="15" id="input" />
-            <div id="project-buttons-container">
-              <button type="button" class="add">Añadir</button>
-              <button type="button" class="cancel">Cancelar</button>
-            </div>
+            <form action="|" id="add-project-form">
+              <input required type="text" maxlength="15" id="input" />
+              <div id="project-buttons-container">
+                <button type="submit" class="add">Añadir</button>
+                <button type="button" class="cancel">Cancelar</button>
+              </div>
+            </form>
           </li>
         </ul>
       </div>
