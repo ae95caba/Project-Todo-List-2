@@ -20,6 +20,7 @@ const addTask = () => {
 
   const form = document.createElement("form");
   form.id = "form";
+  form.classList.add("animate__animated", "animate__zoomIn");
 
   const tittleLabel = document.createElement("label");
   tittleLabel.for = "tittle-input";

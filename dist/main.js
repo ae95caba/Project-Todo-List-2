@@ -5792,6 +5792,7 @@ const addTask = () => {
 
   const form = document.createElement("form");
   form.id = "form";
+  form.classList.add("animate__animated", "animate__zoomIn");
 
   const tittleLabel = document.createElement("label");
   tittleLabel.for = "tittle-input";
@@ -5948,19 +5949,41 @@ const loggingForm = {
 };
 
 const burgerMenu = () => {
+  const sideBar = document.getElementById("sidebar");
+  function closeOnClickOut(e) {
+    if (e.target.closest("#sidebar") == null) {
+      closeNav();
+      sideBar.classList.add("animate__slideOutRight");
+      document.removeEventListener("click", closeOnClickOut);
+    }
+  }
+
   function openNav() {
-    document.getElementById("sidebar").style.display = "flex";
+    sideBar.style.display = "flex";
+    //sideBar.classList.add("animate__animated", "animate__slideInRight");
+    setTimeout(() => {
+      document.addEventListener("click", closeOnClickOut);
+    }, 10);
   }
 
   function closeNav() {
-    document.getElementById("sidebar").style.display = "none";
+    setTimeout(() => {
+      sideBar.style.display = "none";
+    }, 1000);
+
+    //sideBar.classList.remove("animate__slideInRight");
+    //sideBar.classList.add("animate__slideOutRight");
   }
 
   function toggleNav() {
-    if (document.getElementById("sidebar").style.display !== "flex") {
+    if (sideBar.style.display !== "flex") {
       openNav();
+      if (sideBar.classList.contains("animate__slideOutRight")) {
+        sideBar.classList.remove("animate__slideOutRight");
+      }
     } else {
       closeNav();
+      sideBar.classList.add("animate__slideOutRight");
     }
   }
 
