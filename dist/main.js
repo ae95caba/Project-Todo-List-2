@@ -5799,7 +5799,6 @@ const addTask = () => {
   tittleInput.maxLength = "40";
   tittleInput.id = "tittle-input";
   tittleInput.setAttribute("required", "");
-  /* tittleInput.required = true; */
 
   const detailsLabel = document.createElement("label");
   detailsLabel.for = "details-input";
@@ -5817,7 +5816,8 @@ const addTask = () => {
   dateInput.id = "date-input";
 
   const addButton = document.createElement("button");
-  addButton.type = "button";
+  addButton.type = "submit";
+
   addButton.innerText = "Añadir";
   addButton.className = "add";
 
@@ -5840,9 +5840,14 @@ const addTask = () => {
   form.appendChild(dateInput);
   form.appendChild(formButtonsContainer);
 
+  /* form.addEventListener("submit",(e){
+		e.preventDefault();
+
+	}) */
+
   content.appendChild(form);
 
-  addButton.addEventListener("click", () => {
+  addButton.addEventListener("click", (e) => {
     //save form data to storage
     projectsObj[tittle.innerText][tittleInput.value] = {};
     projectsObj[tittle.innerText][tittleInput.value] = {

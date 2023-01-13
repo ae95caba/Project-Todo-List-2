@@ -109,6 +109,7 @@ form input {
 }
 form button {
   font-size: 1.3rem;
+  padding: 10px 0px !important;
   width: 100% !important;
 }
 
@@ -137,6 +138,7 @@ form button {
 }
 #sidebar button {
   font-size: 1.3rem !important;
+  padding: 10px 0px !important;
 }
 #sidebar input {
   font-size: 1rem;
@@ -169,19 +171,26 @@ img {
 
 #tasks-ul li {
   border-bottom: 1px solid grey;
-  display: flex;
+  display: grid;
+  border: 1px solid red;
+  grid-template-columns: 1fr 6fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
   align-items: center;
   height: 5rem;
   padding: 4px 8px;
   gap: 10px;
   overflow: auto;
-  border: 1px solid red;
+}
+#tasks-ul li *:nth-child(3) {
+  text-align: center;
 }
 
-#tasks-ul li p {
-  display: flex;
-  justify-content: left;
-  align-items: center;
+#tasks-ul li div {
+  width: 100%;
+}
+
+#container #tasks-ul li p {
+  width: 100% !important;
 }
 
 #tasks-ul li button {
@@ -281,6 +290,9 @@ ul > li > *:nth-child(2) {
   width: 8rem !important;
   height: 2rem !important;
   white-space: nowrap;
+}
+#tasks-ul > li > *:nth-child(2) p:first-of-type {
+  text-decoration: underline !important;
 }
 
 #content ul > li > *:nth-child(3) {
