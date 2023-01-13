@@ -6081,16 +6081,20 @@ const actuallyAddProject = (notForIndexJs = true, value) => {
   newProjectButton.click();
   ////
   deleteNewProject.addEventListener("click", () => {
-    confirm("Estas seguro de querer borrar tu categoria?");
-    newLi.remove();
-    delete projectsObj[newProjectButton.innerText];
-    src_webStorageApi();
-    const currentContent = document.getElementById("content");
+    const isUserSure = confirm(
+      `Estas seguro de querer borrar "${newProjectButton.innerText}"?`
+    );
+    if (isUserSure) {
+      newLi.remove();
+      delete projectsObj[newProjectButton.innerText];
+      src_webStorageApi();
+      const currentContent = document.getElementById("content");
 
-    currentContent.remove();
-    const content = document.createElement("div");
-    content.id = "content";
-    document.body.appendChild(content);
+      currentContent.remove();
+      const content = document.createElement("div");
+      content.id = "content";
+      document.body.appendChild(content);
+    }
   });
 };
 
