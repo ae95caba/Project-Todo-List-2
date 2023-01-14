@@ -350,9 +350,14 @@ ul > li > *:nth-child(2) {
 
 #menu {
   width: 3.5rem;
-
+  box-shadow: 0 6px rgb(71, 63, 63) !important;
   padding: 5px;
   border-radius: 10px;
+}
+
+#menu:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px rgb(36, 34, 34) !important;
 }
 
 #logging-form > button:first-of-type {
