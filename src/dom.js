@@ -25,40 +25,54 @@ const loggingForm = {
   },
 };
 
-const burgerMenu = () => {
+function burgerMenu() {
   const sideBar = document.getElementById("sidebar");
+  const burgerMenu = document.getElementById("burger-menu");
   let isOpen = sideBar.style.display === "flex";
 
   function closeOnClickOut(e) {
-    if (e.target.closest("#sidebar") == null) {
-      closeNav();
+    console.log("funcion problema");
+    if (isOpen) {
+      if (
+        e.target.closest("#sidebar") == null &&
+        e.target.closest("#burger-menu") == null
+      ) {
+        closeNav();
 
-      document.removeEventListener("click", closeOnClickOut);
+        document.removeEventListener("click", closeOnClickOut);
+      }
     }
   }
 
   function openNav() {
-    if (sideBar.classList.contains("animate__slideOutRight")) {
-      sideBar.classList.remove("animate__slideOutRight");
+    if (!isOpen) {
+      if (sideBar.classList.contains("animate__slideOutRight")) {
+        sideBar.classList.remove("animate__slideOutRight");
+      }
+      sideBar.style.display = "flex";
+      isOpen = true;
+      sideBar.classList.add("animate__slideInRight");
+      setTimeout(() => {
+        if (isOpen) {
+          document.addEventListener("click", closeOnClickOut);
+        }
+      }, 5);
     }
-    sideBar.style.display = "flex";
-    sideBar.classList.add("animate__slideInRight");
-    setTimeout(() => {
-      document.addEventListener("click", closeOnClickOut);
-    }, 5);
-
-    isOpen = true;
   }
 
   function closeNav() {
-    if (sideBar.classList.contains("animate__slideinRight")) {
-      sideBar.classList.remove("animate__slideinRight");
+    if (isOpen) {
+      if (sideBar.classList.contains("animate__slideInRight")) {
+        sideBar.classList.remove("animate__slideInRight");
+      }
+      sideBar.classList.add("animate__slideOutRight");
+      setTimeout(() => {
+        if (isOpen) {
+          sideBar.style.display = "none";
+          isOpen = false;
+        }
+      }, 1000);
     }
-    sideBar.classList.add("animate__slideOutRight");
-    setTimeout(() => {
-      sideBar.style.display = "none";
-    }, 1000);
-    isOpen = false;
   }
 
   function toggleNav() {
@@ -69,19 +83,12 @@ const burgerMenu = () => {
     }
   }
 
-  const burgerMenu = document.getElementById("burger-menu");
   burgerMenu.addEventListener("click", () => {
-    setTimeout(() => {
-      burgerMenu.classList.add("animate__pulse", "animate__faster");
-      setTimeout(() => {
-        burgerMenu.classList.remove("animate__pulse", "animate__faster");
-      }, 1000);
-    }, 0);
-    /*  burgerMenu.classList.add("animate__pulse");
-    burgerMenu.classList.remove("animate__pulse"); */
+    console.log(isOpen);
     toggleNav();
+    console.log(isOpen);
   });
-};
+}
 
 const mouseOverOutClick = (button, clickedClass = true) => {
   //the clickedclass=true is for setting it false on buttons that i dont want to have the clicked class

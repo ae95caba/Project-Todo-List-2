@@ -22,6 +22,7 @@ const howToUseMessage = () => {
 const noTasksMessage = () => {
   const messageContainer = document.createElement("div");
   messageContainer.id = "message-container";
+
   const messageTittle = document.createElement("h2");
   messageTittle.innerText = "Felicidades, no hay tareas!";
   const messageImg = document.createElement("img");

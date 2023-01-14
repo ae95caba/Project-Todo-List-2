@@ -15,7 +15,7 @@ function displayAllTasks(content) {
     });
   });
   if (tasksUl.innerHTML === "") {
-    content.appendChild(howToUseMessage());
+    content.appendChild(noTasksMessage());
   } else {
     content.appendChild(tasksUl);
   }
@@ -57,7 +57,7 @@ function displayTasksOfEachProject(content, tittle) {
         );
       }
     );
-  } /*  else {
+  } /* else {
     content.appendChild(noTasksMessage());
   } */
 }
