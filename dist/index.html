@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#94405c" />
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
     <script src="main.js" defer></script>
     <link rel="icon" href="fav-icon.svg" />
     <link
@@ -115,5 +118,15 @@
     </div>
     <div id="content"></div>
     <div id="footer"><p>André Espinoza © 2023 - All Rights Reserved</p></div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/serviceWorker.js")
+            .then((res) => console.log("service worker registered"))
+            .catch((err) => console.log("service worker not registered", err));
+        });
+      }
+    </script>
   </body>
 </html>

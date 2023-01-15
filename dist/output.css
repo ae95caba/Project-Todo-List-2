@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,14 @@
 #logging-form {
   display: none;
 }
+#logging-form * {
+  font-size: 13px !important;
+}
+#logging-form button:first-of-type {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 
 #todos-li {
   display: grid;
@@ -19,41 +28,35 @@
 #projects-list {
   justify-content: center;
 }
-
-#content p {
-  font-size: 1.3rem !important;
-}
-
 #projects-list li {
   width: 100% !important;
 }
 
 #header {
   width: 100%;
-  background-color: rgb(148, 64, 92);
+  background-color: #94405c;
   position: sticky;
   align-content: center;
   top: 0;
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  font-size: 2rem;
   height: auto;
   align-items: center;
   padding: 12px;
 }
-
-#header > p {
+#header p {
   justify-self: center !important;
   padding: 0px;
+  font-family: "Lilita One", cursive;
+  font-size: 2.3rem;
 }
 
 #burger-menu {
-  display: none;
-}
-
-#header > img {
-  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 }
 
 #message-container {
@@ -98,27 +101,6 @@ svg {
   height: 1.5rem !important;
 }
 
-#content form {
-  background-color: white;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  border-radius: 15px;
-  border: 1px solid grey;
-}
-#content form label {
-  font-size: 1.3rem;
-}
-#content form input {
-  font-size: 1.3rem;
-}
-#content form button {
-  font-size: 1.3rem;
-  padding: 10px 0px !important;
-  width: 100% !important;
-}
-
 #footer {
   grid-row: 3/4;
   grid-column: 1/3;
@@ -130,6 +112,12 @@ svg {
 }
 
 #sidebar {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  background-color: white;
   padding-top: 5px;
   grid-row: 2/3;
   display: flex;
@@ -139,6 +127,26 @@ svg {
   width: 66vw;
   overflow: auto;
   border: 1px solid grey;
+}
+#sidebar ul > li > :nth-child(2) {
+  margin-right: auto;
+}
+#sidebar #add-project-button {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding: 5px 0px;
+  align-items: center;
+  justify-content: center;
+}
+#sidebar #add-project-button svg {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  color: #94405c;
+}
+#sidebar #add-project-button button {
+  margin-right: 0px;
+  color: #94405c;
 }
 #sidebar .new-li button {
   width: 100%;
@@ -153,6 +161,10 @@ svg {
 #sidebar button {
   font-size: 1.3rem !important;
   padding: 10px 0px !important;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: transparent;
+  font-size: 1rem;
 }
 #sidebar input {
   font-size: 1.3rem;
@@ -191,54 +203,48 @@ img {
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid grey;
   display: grid;
-  grid-template-columns: 1fr 6fr 2fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 6fr 4fr 1fr 1fr;
   align-items: center;
   height: 5rem;
   padding: 4px 8px;
   gap: 10px;
   overflow: auto;
 }
-#tasks-ul li *:nth-child(3) {
+#tasks-ul li :nth-child(3) {
   text-align: center;
+  width: 4rem;
+  flex: none;
+  align-self: center;
+  border: 1px solid black;
+  padding: 2px !important;
+  border-radius: 5px;
 }
-
+#tasks-ul li p:nth-of-type(2) {
+  margin-left: 5px;
+}
+#tasks-ul li :nth-child(2) {
+  overflow: auto;
+}
+#tasks-ul li :nth-child(2) p {
+  width: 8rem !important;
+  height: 2rem !important;
+  white-space: nowrap;
+}
 #tasks-ul li div {
   width: 100%;
 }
-
-#container #tasks-ul li p {
-  width: 100% !important;
+#tasks-ul li input {
+  font-size: 1.3rem;
 }
-
 #tasks-ul li button {
   background-color: transparent;
 }
-
-.cancel {
+#tasks-ul li .cancel {
   background-color: rgb(97, 89, 89) !important;
   color: white;
   padding: 5px !important;
   border-radius: 10px !important;
   width: 5rem;
-}
-
-#sidebar #add-project-button {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-  padding: 5px 0px;
-  align-items: center;
-  justify-content: center;
-}
-#sidebar #add-project-button svg {
-  width: 2.5rem !important;
-  height: 2.5rem !important;
-  color: rgb(148, 64, 92);
-}
-#sidebar #add-project-button button {
-  margin-right: 0px;
-  color: rgb(148, 64, 92);
 }
 
 #home li {
@@ -256,6 +262,9 @@ img {
   align-items: center;
 }
 
+#new-project-li input {
+  grid-column: 1/3;
+}
 #new-project-li form {
   display: grid;
   margin-top: 0px;
@@ -274,10 +283,6 @@ img {
   width: 50%;
 }
 
-#new-project-li input {
-  grid-column: 1/3;
-}
-
 .hovered {
   background-color: orange;
 }
@@ -292,7 +297,7 @@ img {
 }
 
 .clicked {
-  background-color: rgb(148, 64, 92) !important;
+  background-color: #94405c !important;
 }
 .clicked button {
   color: black;
@@ -300,30 +305,6 @@ img {
 
 .hidden {
   display: none !important;
-}
-
-ul > li > *:nth-child(2) {
-  margin-right: auto;
-}
-
-#tasks-ul > li > *:nth-child(2) {
-  overflow: auto;
-  /* p:first-of-type {
-    text-decoration: underline !important;
-  }*/
-}
-#tasks-ul > li > *:nth-child(2) p {
-  width: 8rem !important;
-  height: 2rem !important;
-  white-space: nowrap;
-}
-
-#content ul > li > *:nth-child(3) {
-  flex: none;
-  align-self: center;
-  border: 1px solid black;
-  padding: 2px !important;
-  border-radius: 5px;
 }
 
 #menu {
@@ -338,68 +319,50 @@ ul > li > *:nth-child(2) {
   box-shadow: 0 2px rgb(36, 34, 34) !important;
 }
 
-#logging-form > button:first-of-type {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-#header > #logging-form * {
-  font-size: 13px !important;
-}
-
-#tasks-ul p:nth-of-type(2) {
-  margin-left: 5px;
-}
-
-@media only screen and (max-width: 600px) {
-  #add-task-button {
-    border-radius: 50% !important;
-    width: 30vw;
-    height: 30vw;
-    position: fixed;
-    right: 5%;
-    bottom: 10%;
-    color: white;
-    font-size: 1.3rem;
-  }
-  #logging-form {
-    /* display: flex; */
-    display: none;
-  }
-  #content form {
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  #content {
-    grid-column: 1/3 !important;
-    font-size: 14px;
-  }
-  #sidebar {
-    display: none;
-    z-index: 1;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    background-color: white;
-  }
-  #burger-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-  }
-}
 #content {
   grid-column: 2/3;
   grid-row: 2/3;
   display: flex;
   flex-direction: column;
+  grid-column: 1/3 !important;
+  font-size: 14px;
   padding: 0px;
   background-color: white;
+}
+#content form {
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  border-radius: 15px;
+  border: 1px solid grey;
+}
+#content form label {
+  font-size: 1.3rem;
+}
+#content form input {
+  font-size: 1.3rem;
+}
+#content form button {
+  font-size: 1.3rem;
+  padding: 10px 0px !important;
+  width: 100% !important;
+}
+#content p {
+  font-size: 1.3rem !important;
+}
+#content #tittle {
+  padding: 15px;
+  background-color: rgb(97, 89, 89);
+  color: white;
+  font-weight: 600;
+  font-size: 1.7rem !important;
 }
 
 li button {
@@ -407,26 +370,11 @@ li button {
   padding: 5px;
 }
 
-#sidebar button {
-  border-radius: 5px;
-  padding: 5px;
-  background-color: transparent;
-  font-size: 1rem;
-}
-
 .new-li {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   justify-items: center;
   /* border: 1px solid green; */
-}
-
-#content #tittle {
-  padding: 15px;
-  background-color: rgb(97, 89, 89);
-  color: white;
-  font-weight: 600;
-  font-size: 1.7rem !important;
 }
 
 #tittle,
@@ -442,13 +390,21 @@ li button {
 }
 
 #add-task-button {
+  border-radius: 50% !important;
   margin-right: auto;
   padding: 10px;
   border-radius: 15%;
+  width: 30vw;
+  height: 30vw;
+  position: fixed;
+  right: 5%;
+  bottom: 10%;
+  color: white;
+  font-size: 1.3rem;
 }
 
 .add {
-  background-color: rgb(148, 64, 92) !important;
+  background-color: #94405c !important;
   border-radius: 10px !important;
   padding: 5px;
   font-weight: bolder;

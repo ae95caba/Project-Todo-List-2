@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +11,21 @@
 }
 
 $myShadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.5);
-$primaryColor: rgb(148, 64, 92);
+$primaryColor: #94405c;
 $secondaryColor: rgb(97, 89, 89);
 
 #logging-form {
   display: none;
+  * {
+    font-size: 13px !important;
+  }
+
+  button:first-of-type {
+    position: absolute;
+
+    right: 10px;
+    top: 10px;
+  }
 }
 
 #todos-li {
@@ -23,14 +35,9 @@ $secondaryColor: rgb(97, 89, 89);
 
 #projects-list {
   justify-content: center;
-}
-
-#content p {
-  font-size: 1.3rem !important;
-}
-
-#projects-list li {
-  width: 100% !important;
+  li {
+    width: 100% !important;
+  }
 }
 
 #header {
@@ -43,24 +50,25 @@ $secondaryColor: rgb(97, 89, 89);
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  font-size: 2rem;
+
   height: auto;
   align-items: center;
 
   padding: 12px;
-}
+  p {
+    justify-self: center !important;
+    padding: 0px;
+    font-family: "Lilita One", cursive;
 
-#header > p {
-  justify-self: center !important;
-  padding: 0px;
+    font-size: 2.3rem;
+  }
 }
 
 #burger-menu {
-  display: none;
-}
-
-#header > img {
-  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 }
 
 #message-container {
@@ -107,27 +115,6 @@ svg {
   height: 1.5rem !important;
 }
 
-#content form {
-  background-color: white;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  border-radius: 15px;
-  border: 1px solid grey;
-  label {
-    font-size: 1.3rem;
-  }
-  input {
-    font-size: 1.3rem;
-  }
-  button {
-    font-size: 1.3rem;
-    padding: 10px 0px !important;
-    width: 100% !important;
-  }
-}
-
 #footer {
   grid-row: 3/4;
   grid-column: 1/3;
@@ -139,6 +126,12 @@ svg {
 }
 
 #sidebar {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  background-color: white;
   padding-top: 5px;
   grid-row: 2/3;
   display: flex;
@@ -148,6 +141,28 @@ svg {
   width: 66vw;
 
   overflow: auto;
+  ul > li > :nth-child(2) {
+    margin-right: auto;
+  }
+  #add-project-button {
+    display: flex;
+    gap: 10px;
+
+    width: 100%;
+    padding: 5px 0px;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      color: $primaryColor;
+    }
+    button {
+      margin-right: 0px;
+      color: $primaryColor;
+    }
+  }
 
   .new-li button {
     width: 100%;
@@ -164,7 +179,12 @@ svg {
   button {
     font-size: 1.3rem !important;
     padding: 10px 0px !important;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: transparent;
+    font-size: 1rem;
   }
+
   input {
     font-size: 1.3rem;
     overflow: auto;
@@ -205,55 +225,50 @@ img {
   box-shadow: $myShadow;
   border-bottom: 1px solid grey;
   display: grid;
-  grid-template-columns: 1fr 6fr 2fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 6fr 4fr 1fr 1fr;
+
   align-items: center;
   height: 5rem;
   padding: 4px 8px;
   gap: 10px;
   overflow: auto;
-  *:nth-child(3) {
+  :nth-child(3) {
     text-align: center;
+    width: 4rem;
+    flex: none;
+    align-self: center;
+    border: 1px solid black;
+    padding: 2px !important;
+    border-radius: 5px;
   }
-}
+  p:nth-of-type(2) {
+    margin-left: 5px;
+  }
+  :nth-child(2) {
+    overflow: auto;
 
-#tasks-ul li div {
-  width: 100%;
-}
+    p {
+      width: 8rem !important;
+      height: 2rem !important;
+      white-space: nowrap;
+    }
+  }
 
-#container #tasks-ul li p {
-  width: 100% !important;
-}
-
-#tasks-ul li button {
-  background-color: transparent;
-}
-
-.cancel {
-  background-color: $secondaryColor !important;
-  color: white;
-  padding: 5px !important;
-  border-radius: 10px !important;
-  width: 5rem;
-}
-
-#sidebar #add-project-button {
-  display: flex;
-  gap: 10px;
-
-  width: 100%;
-  padding: 5px 0px;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
-    color: $primaryColor;
+  div {
+    width: 100%;
+  }
+  input {
+    font-size: 1.3rem;
   }
   button {
-    margin-right: 0px;
-    color: $primaryColor;
+    background-color: transparent;
+  }
+  .cancel {
+    background-color: $secondaryColor !important;
+    color: white;
+    padding: 5px !important;
+    border-radius: 10px !important;
+    width: 5rem;
   }
 }
 
@@ -273,28 +288,29 @@ img {
   align-items: center;
 }
 
-#new-project-li form {
-  display: grid;
-  margin-top: 0px;
-  padding: 10px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
-
-  #project-buttons-container {
+#new-project-li {
+  input {
     grid-column: 1/3;
-    display: flex;
-    gap: 5px;
-    width: 100% !important;
+  }
+  form {
+    display: grid;
+    margin-top: 0px;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
 
-    button {
-      width: 50%;
+    #project-buttons-container {
+      grid-column: 1/3;
+      display: flex;
+      gap: 5px;
+      width: 100% !important;
+
+      button {
+        width: 50%;
+      }
     }
   }
-}
-
-#new-project-li input {
-  grid-column: 1/3;
 }
 
 .hovered {
@@ -322,32 +338,6 @@ img {
   display: none !important;
 }
 
-ul > li > *:nth-child(2) {
-  margin-right: auto;
-}
-
-#tasks-ul > li > *:nth-child(2) {
-  overflow: auto;
-
-  p {
-    width: 8rem !important;
-    height: 2rem !important;
-    white-space: nowrap;
-  }
-
-  /* p:first-of-type {
-    text-decoration: underline !important;
-  }*/
-}
-
-#content ul > li > *:nth-child(3) {
-  flex: none;
-  align-self: center;
-  border: 1px solid black;
-  padding: 2px !important;
-  border-radius: 5px;
-}
-
 #menu {
   width: 3.5rem;
   box-shadow: 0 6px rgb(71, 63, 63) !important;
@@ -360,74 +350,52 @@ ul > li > *:nth-child(2) {
   box-shadow: 0 2px rgb(36, 34, 34) !important;
 }
 
-#logging-form > button:first-of-type {
-  position: absolute;
+#content {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/3 !important;
+  font-size: 14px;
+  padding: 0px;
+  background-color: white;
 
-  right: 10px;
-  top: 10px;
-}
-
-#header > #logging-form * {
-  font-size: 13px !important;
-}
-
-#tasks-ul p:nth-of-type(2) {
-  margin-left: 5px;
-}
-
-@media only screen and (max-width: 600px) {
-  #add-task-button {
-    border-radius: 50% !important;
-
-    width: 30vw;
-    height: 30vw;
-    position: fixed;
-    right: 5%;
-    bottom: 10%;
-    color: white;
-    font-size: 1.3rem;
-  }
-
-  #logging-form {
-    /* display: flex; */
-    display: none;
-  }
-  #content form {
+  form {
     position: fixed;
 
     z-index: 1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-  }
-  #content {
-    grid-column: 1/3 !important;
-    font-size: 14px;
-  }
-  #sidebar {
-    display: none;
-    z-index: 1;
-    position: fixed;
-    top: 0px;
-    right: 0px;
     background-color: white;
-  }
-  #burger-menu {
+    padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
+    flex-direction: column;
+    align-self: center;
+    border-radius: 15px;
+    border: 1px solid grey;
+    label {
+      font-size: 1.3rem;
+    }
+    input {
+      font-size: 1.3rem;
+    }
+    button {
+      font-size: 1.3rem;
+      padding: 10px 0px !important;
+      width: 100% !important;
+    }
   }
-}
-
-#content {
-  grid-column: 2/3;
-  grid-row: 2/3;
-  display: flex;
-  flex-direction: column;
-
-  padding: 0px;
-  background-color: white;
+  p {
+    font-size: 1.3rem !important;
+  }
+  #tittle {
+    padding: 15px;
+    background-color: $secondaryColor;
+    color: white;
+    font-weight: 600;
+    font-size: 1.7rem !important;
+  }
 }
 
 li button {
@@ -435,26 +403,11 @@ li button {
   padding: 5px;
 }
 
-#sidebar button {
-  border-radius: 5px;
-  padding: 5px;
-  background-color: transparent;
-  font-size: 1rem;
-}
-
 .new-li {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   justify-items: center;
   /* border: 1px solid green; */
-}
-
-#content #tittle {
-  padding: 15px;
-  background-color: $secondaryColor;
-  color: white;
-  font-weight: 600;
-  font-size: 1.7rem !important;
 }
 
 #tittle,
@@ -470,9 +423,17 @@ li button {
 }
 
 #add-task-button {
+  border-radius: 50% !important;
   margin-right: auto;
   padding: 10px;
   border-radius: 15%;
+  width: 30vw;
+  height: 30vw;
+  position: fixed;
+  right: 5%;
+  bottom: 10%;
+  color: white;
+  font-size: 1.3rem;
 }
 
 .add {

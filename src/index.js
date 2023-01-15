@@ -7,6 +7,9 @@ import contentOfTabsFilters from "./contentOfTabsFilters";
 
 import { loggingForm, burgerMenu, mouseOverOutClick } from "./dom";
 
+///////////// service worker
+
+/////////////
 loggingForm.addCloseEvent();
 loggingForm.addOpenEvent();
 

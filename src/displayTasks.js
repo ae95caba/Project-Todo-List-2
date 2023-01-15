@@ -198,8 +198,13 @@ function displaySingleTask(project, tasksUl, task, container2) {
   if (taskDate.innerHTML == "") {
     taskDate.innerText = "Sin fecha";
   }
-  taskLi.appendChild(taskDate);
-  taskLi.appendChild(taskDateEdit);
+
+  const taskDateDiv = document.createElement("div");
+  taskDateDiv.appendChild(taskDate);
+  taskDateDiv.appendChild(taskDateEdit);
+
+  taskLi.appendChild(taskDateDiv);
+
   ////////////////////////////////////
   const deleteButton = document.createElement("img");
   deleteButton.src = "bin.svg";
