@@ -36,9 +36,9 @@
   width: 100%;
   background-color: #94405c;
   position: sticky;
+  grid-row: 1/2;
   align-content: center;
   top: 0;
-  grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   height: auto;
@@ -89,22 +89,16 @@
 
 body {
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 12vh 6fr 8vh;
-  min-height: 100vh;
-  height: auto !important;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  max-height: auto;
   width: 100vw;
 }
 
 svg {
   width: 1.5rem !important;
   height: 1.5rem !important;
-}
-
-#footer {
-  grid-row: 3/4;
-  grid-column: 1/3;
-  text-align: center;
 }
 
 #open-logging {
@@ -119,7 +113,6 @@ svg {
   right: 0px;
   background-color: white;
   padding-top: 5px;
-  grid-row: 2/3;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -288,6 +281,9 @@ img {
 }
 
 #footer {
+  grid-row: 3/4;
+  text-align: center;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -393,7 +389,6 @@ li button {
   border-radius: 50% !important;
   margin-right: auto;
   padding: 10px;
-  border-radius: 15%;
   width: 30vw;
   height: 30vw;
   position: fixed;
@@ -431,6 +426,43 @@ form {
   display: flex;
   gap: 7px;
   align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  #content {
+    grid-column: 2/3 !important;
+  }
+  #burger-menu {
+    display: none;
+  }
+  #sidebar {
+    display: flex !important;
+    position: static;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    width: 100%;
+  }
+  #header {
+    grid-column: 1/3;
+    position: static;
+  }
+  body {
+    grid-template-columns: 40% 60%;
+  }
+  #footer {
+    grid-column: 1/3;
+  }
+  #tasks-ul li :nth-child(3) {
+    width: auto;
+  }
+  #add-task-button {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1rem;
+  }
+  /*   #content {
+    position: static !important;
+  } */
 }
 
 /*# sourceMappingURL=output.css.map */
