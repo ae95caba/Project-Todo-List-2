@@ -1,3 +1,4 @@
+import enquire from "enquire.js";
 function loggingButton(callBack) {
   const loggingButton = document.getElementById("submit-button");
   loggingButton.addEventListener("click", callBack());
@@ -26,12 +27,11 @@ const loggingForm = {
 };
 
 function burgerMenu() {
-  const sideBar = document.getElementById("sidebar");
+  const sidebar = document.getElementById("sidebar");
   const burgerMenu = document.getElementById("burger-menu");
-  let isOpen = sideBar.style.display === "flex";
+  let isOpen = sidebar.style.display === "flex";
 
-  function closeOnClickOut(e) {
-    console.log("funcion problema");
+  function closeSidebarOnClickOut(e) {
     if (isOpen) {
       if (
         e.target.closest("#sidebar") == null &&
@@ -39,22 +39,28 @@ function burgerMenu() {
       ) {
         closeNav();
 
-        document.removeEventListener("click", closeOnClickOut);
+        document.removeEventListener("click", (e) => {
+          closeSidebarOnClickOut(e);
+        });
       }
     }
   }
 
+  function upTo768Res(closeSidebarOnClickOut) {}
+
   function openNav() {
     if (!isOpen) {
-      if (sideBar.classList.contains("animate__slideOutRight")) {
-        sideBar.classList.remove("animate__slideOutRight");
+      if (sidebar.classList.contains("animate__slideOutRight")) {
+        sidebar.classList.remove("animate__slideOutRight");
       }
-      sideBar.style.display = "flex";
+      sidebar.style.display = "flex";
       isOpen = true;
-      sideBar.classList.add("animate__slideInRight");
+      sidebar.classList.add("animate__slideInRight");
       setTimeout(() => {
         if (isOpen) {
-          document.addEventListener("click", closeOnClickOut);
+          document.addEventListener("click", (e) => {
+            closeSidebarOnClickOut(e);
+          });
         }
       }, 5);
     }
@@ -62,13 +68,13 @@ function burgerMenu() {
 
   function closeNav() {
     if (isOpen) {
-      if (sideBar.classList.contains("animate__slideInRight")) {
-        sideBar.classList.remove("animate__slideInRight");
+      if (sidebar.classList.contains("animate__slideInRight")) {
+        sidebar.classList.remove("animate__slideInRight");
       }
-      sideBar.classList.add("animate__slideOutRight");
+      sidebar.classList.add("animate__slideOutRight");
       setTimeout(() => {
         if (isOpen) {
-          sideBar.style.display = "none";
+          sidebar.style.display = "none";
           isOpen = false;
         }
       }, 1000);
@@ -84,9 +90,7 @@ function burgerMenu() {
   }
 
   burgerMenu.addEventListener("click", () => {
-    console.log(isOpen);
     toggleNav();
-    console.log(isOpen);
   });
 }
 
